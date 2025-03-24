@@ -1,13 +1,14 @@
 CFLAGS =  -Wall -Wextra -Werror -std=c++98
 CC = c++
-FILES = megaphone.cpp
-NAME = megaphone
+FILES = main.cpp
+NAME = phonebook
+HEADERS = phonebook.hpp
 
 all : $(NAME)
 
 
 $(NAME)	: $(FILES) Makefile
-		$(CC) $(CFLAGS) $(FILES) -o $(NAME)
+		$(CC) $(CFLAGS) $(FILES) $(HEADERS) -o $(NAME)
 
 clean	:
 
