@@ -4,7 +4,6 @@
 
 class Contact
 {
-	 
 	public:
 		 int 		index;
 
@@ -20,6 +19,11 @@ class Contact
 			this->last_name		= ln;
 			this->nick_name		= nn;
 			this->phone_number	= pn;
+		 }
+
+		 void get_name()
+		 {
+			std::cout << "Nombre: " << this->first_name << std::endl;
 		 }
 	private:
 	 

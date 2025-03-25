@@ -1,6 +1,6 @@
 CFLAGS =  -Wall -Wextra -Werror -std=c++98
 CC = c++
-FILES = main.cpp
+FILES = main.cpp phonebook.cpp
 NAME = phonebook
 HEADERS = PhoneBook.hpp Contact.hpp
 

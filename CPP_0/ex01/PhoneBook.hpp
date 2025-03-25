@@ -12,11 +12,14 @@
 	 PhoneBook(void):contacts(0){};
 	 
 	 void add(void);
+	 void search(void);
 
 	 private:
 	 
 	 	int contacts;
 	 	Contact contactos[8];
+
+		void validate_index(int index);
 
  };
 
