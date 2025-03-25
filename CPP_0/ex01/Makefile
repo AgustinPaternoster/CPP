@@ -2,13 +2,13 @@ CFLAGS =  -Wall -Wextra -Werror -std=c++98
 CC = c++
 FILES = main.cpp
 NAME = phonebook
-HEADERS = phonebook.hpp
+HEADERS = PhoneBook.hpp Contact.hpp
 
 all : $(NAME)
 
 
-$(NAME)	: $(FILES) Makefile
-		$(CC) $(CFLAGS) $(FILES) $(HEADERS) -o $(NAME)
+$(NAME)	: $(FILES) $(HEADERS) Makefile
+		$(CC) $(CFLAGS) $(FILES) $(HEADERS) -g -o $(NAME)
 
 clean	:
 
