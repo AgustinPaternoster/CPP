@@ -1,6 +1,8 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
+
+
 void PhoneBook::add(void)
 {
 	std::string data[] = {"First Name", "Last Name", "nickname" , "phone number"}; 
@@ -32,15 +34,28 @@ void PhoneBook::search(void)
 {
     int index;
 
-    std::cout << "Ingrese el indice del contacto: ";
-    std::cin >> index;
-    this->contactos[index].get_name();
+	if (contacts == 0)
+		std::cout << "No hay ningun registro" << std::endl;
+	else
+	{
+		std::cout << "Ingrese el indice del contacto: ";
+		std::cin >> index;
+		while(index > this->contacts || index == 0 || std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "indice incorrecto " << "hay "<< contacts 
+						<< " contactos registrados :";
+			std::cin >> index;	
+		}
+		this->contactos[index - 1].get_name();
+	}
 }
 
-void PhoneBook::validate_index(int index)
+void PhoneBook::print_intructions()
 {
-    if (index => this-> contacts)
-    {
-        std::cout << "wrong index , try again" << std::endl;
-    }
+	std::cout << "Ingrese  ADD para agregar un contacto" << std::endl;
+	std::cout << "Ingrese  SEARCH para buscar un contacto" << std::endl;
+	std::cout << "Ingrese  EXIT para salir de la aplicacion" << std::endl;
 }
+

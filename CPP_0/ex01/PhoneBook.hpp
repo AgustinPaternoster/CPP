@@ -3,7 +3,7 @@
 
  #include <iostream>
  #include "Contact.hpp"
- 
+ #include <limits>
  class PhoneBook 
  {
 	
@@ -13,13 +13,12 @@
 	 
 	 void add(void);
 	 void search(void);
+	 void print_intructions();
 
 	 private:
 	 
 	 	int contacts;
 	 	Contact contactos[8];
-
-		void validate_index(int index);
 
  };
 

@@ -6,21 +6,17 @@ int main(void)
     std::string command;
 	PhoneBook phonebook;
     
-    while (1)
+	while (1)
     {
-        std::cin >> command;
+    
+		phonebook.print_intructions();
+		std::cin >> command;
         if (command.compare("EXIT") == 0)
             break;
 		if (command.compare("ADD") == 0)
 			phonebook.add();
 		if (command.compare("SEARCH") == 0)
 			phonebook.search();	
-		else
-		{
-			std::cout << "Ingrese  ADD para agregar un contacto" << std::endl;
-			std::cout << "Ingrese  SEARCH para buscar un contacto" << std::endl;
-			std::cout << "Ingrese  EXIT para salir de la aplicacion" << std::endl;
-		}
     }
     return (0);
 }
