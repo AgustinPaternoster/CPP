@@ -1,6 +1,6 @@
 CFLAGS =  -Wall -Wextra -Werror -std=c++98
 CC = c++
-FILES = main.cpp phonebook.cpp
+FILES = main.cpp phonebook.cpp contact.cpp
 NAME = phonebook
 HEADERS = PhoneBook.hpp Contact.hpp
 
@@ -12,7 +12,7 @@ $(NAME)	: $(FILES) $(HEADERS) Makefile
 
 clean	:
 
-clean	: 
+fclean	: 
 		rm $(NAME)
 
-re		: flclean all
+re		: fclean all

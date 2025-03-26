@@ -1,8 +1,6 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-
-
 void PhoneBook::add(void)
 {
 	std::string data[] = {"First Name", "Last Name", "nickname" , "phone number"}; 
@@ -13,8 +11,7 @@ void PhoneBook::add(void)
 		while(1)
 		{
 			std::cout << "Ingrese el " << data[i] << ": ";
-			std::getline(std::cin , data_contact[i]);
-			std::cin >> data_contact[i];
+			std::getline(std::cin , data_contact[i]);			
 			if (data_contact[i].empty() == 0)
 				break;
 			else
@@ -22,13 +19,14 @@ void PhoneBook::add(void)
 		}
 	}
 	move_contacts(contacts);
-	contactos[0].new_contact(contacts,
-								   data_contact[0],
-								   data_contact[1],
-								   data_contact[2],
-								   data_contact[3]);
-    this->contacts++;
-	std::cout << "Contacto creado" << std::endl;
+	contactos[0].new_contact(data_contact[0],
+							 data_contact[1],
+							 data_contact[2],
+							 data_contact[3]);
+    
+	if(this->contacts < 8)
+		this->contacts++;
+	std::cout << "** Contacto creado **" << std::endl;
 }
 
 void PhoneBook::search(void)
@@ -49,7 +47,8 @@ void PhoneBook::search(void)
 						<< " contactos registrados :";
 			std::cin >> index;	
 		}
-		this->contactos[index - 1].get_name();
+		this->contactos[index - 1].print_data();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 }
 
@@ -68,3 +67,12 @@ void PhoneBook::move_contacts(int contacts)
 			contactos[i] = contactos[i - 1];
 	}
 }
+
+// {
+// 	std::string text = "01234567891";
+// 	if (text.size() > 10)
+// 		std::cout << std::setfill('.') << std::setw(10) << std::left << text.substr(0,9) << "|" << std::endl;
+// 	else
+// 		std::cout << std::setw(10) << text << "|" << std::endl;
+// 	return(0);
+// }

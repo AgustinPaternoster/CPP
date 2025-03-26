@@ -4,27 +4,10 @@
 
 class Contact
 {
-	public:
-		 int 		index;
-
-		 Contact(void)
-		 {
-			std::cout << "Contacto iniciado" << std::endl;
-		 }
-		 
-		 void new_contact(int index, std::string fn, std::string ln, std::string nn, std::string pn)
-		 {
-			this->index 		= index;
-			this->first_name 	= fn;
-			this->last_name		= ln;
-			this->nick_name		= nn;
-			this->phone_number	= pn;
-		 }
-
-		 void get_name()
-		 {
-			std::cout << "Nombre: " << this->first_name << std::endl;
-		 }
+	public:		 
+		
+		void new_contact(std::string fn, std::string ln, std::string nn, std::string pn);
+		void print_data(void);
 	private:
 	 
 		std::string first_name;

@@ -8,7 +8,6 @@ int main(void)
     
 	while (1)
     {
-	
 		phonebook.print_intructions();
 		std::cout << "ingrese un comando: ";
 		std::getline(std::cin , command);

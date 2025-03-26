@@ -1,13 +1,16 @@
- #include <iostream>
- #include <iomanip>
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
+#include <iomanip>
 
-int main(void)
+void Contact::new_contact(std::string fn, std::string ln, std::string nn, std::string pn)
 {
-	std::string first_name = "012345678900";
-	std::string last_name = "xxx";
-	std::string nick_name = "yy";
-	std::string phone_number = "zz";
-
+	this->first_name 	= fn;
+	this->last_name		= ln;
+	this->nick_name		= nn;
+	this->phone_number	= pn;
+}
+void Contact::print_data(void)
+{
 	std::string array[4] = {first_name, last_name, nick_name, phone_number};
 	std::cout << '|';
 	for (int i = 0; i < 4; i++)
@@ -18,5 +21,4 @@ int main(void)
 			std::cout << std::setw(10) << std::setfill(' ') << std::right << array[i] << "|";
 	}
 	std::cout << std::endl;
-	return (0);
 }
