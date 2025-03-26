@@ -13,7 +13,8 @@
 	 
 	 void add(void);
 	 void search(void);
-	 void print_intructions();
+	 void print_intructions(void);
+	 void move_contacts(int contacts);
 
 	 private:
 	 

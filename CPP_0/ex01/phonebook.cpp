@@ -21,7 +21,8 @@ void PhoneBook::add(void)
 			   std::cout << "No ha ingresado ningun valor" << std::endl;
 		}
 	}
-	contactos[contacts].new_contact(contacts,
+	move_contacts(contacts);
+	contactos[0].new_contact(contacts,
 								   data_contact[0],
 								   data_contact[1],
 								   data_contact[2],
@@ -52,10 +53,18 @@ void PhoneBook::search(void)
 	}
 }
 
-void PhoneBook::print_intructions()
+void PhoneBook::print_intructions(void)
 {
 	std::cout << "Ingrese  ADD para agregar un contacto" << std::endl;
 	std::cout << "Ingrese  SEARCH para buscar un contacto" << std::endl;
 	std::cout << "Ingrese  EXIT para salir de la aplicacion" << std::endl;
 }
 
+void PhoneBook::move_contacts(int contacts)
+{	
+	for (int i = contacts ; i > 0; i--)
+	{
+		if (i < 8)
+			contactos[i] = contactos[i - 1];
+	}
+}
