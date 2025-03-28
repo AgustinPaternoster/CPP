@@ -2,7 +2,7 @@
 CFLAGS =  -std=c++98
 CC = c++
 FILES = Account.cpp test.cpp
-NAME = Account
+NAME = account
 HEADERS = Account.hpp
 
 all : $(NAME)
