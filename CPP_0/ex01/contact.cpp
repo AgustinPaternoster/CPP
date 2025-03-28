@@ -4,14 +4,14 @@
 
 void Contact::new_contact(std::string fn, std::string ln, std::string nn, std::string pn)
 {
-	this->first_name 	= fn;
-	this->last_name		= ln;
-	this->nick_name		= nn;
-	this->phone_number	= pn;
+	this->_first_name = fn;
+	this->_last_name = ln;
+	this->_nick_name = nn;
+	this->_phone_number	= pn;
 }
 void Contact::print_data(void)
 {
-	std::string array[4] = {first_name, last_name, nick_name, phone_number};
+	std::string array[4] = {_first_name, _last_name, _nick_name, _phone_number};
 	std::cout << '|';
 	for (int i = 0; i < 4; i++)
 	{

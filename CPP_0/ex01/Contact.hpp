@@ -10,10 +10,10 @@ class Contact
 		void print_data(void);
 	private:
 	 
-		std::string first_name;
-		std::string last_name;
-		std::string	nick_name;
-		std::string phone_number; 
+		std::string _first_name;
+		std::string _last_name;
+		std::string	_nick_name;
+		std::string _phone_number; 
 };
 
 #endif

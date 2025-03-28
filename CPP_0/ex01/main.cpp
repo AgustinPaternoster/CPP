@@ -9,7 +9,7 @@ int main(void)
 	while (1)
     {
 		phonebook.print_intructions();
-		std::cout << "ingrese un comando: ";
+		std::cout << "Enter a command: ";
 		std::getline(std::cin , command);
         if (command.compare("EXIT") == 0)
 			break;

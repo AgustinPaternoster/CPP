@@ -8,7 +8,8 @@
  {
 	 public:
 	 
-	 PhoneBook(void):contacts(0){};
+	 PhoneBook(void);
+	 ~PhoneBook(void);
 	 void add(void);
 	 void search(void);
 	 void print_intructions(void);
@@ -16,8 +17,8 @@
 	 private:
 	 
 	 	void move_contacts(int contacts);
-	 	int contacts;
-	 	Contact contactos[8];
+	 	int 	_contacts;
+	 	Contact _contact_list[8];
  };
 
 #endif

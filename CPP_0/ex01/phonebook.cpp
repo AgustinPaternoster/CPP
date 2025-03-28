@@ -1,6 +1,14 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
+PhoneBook::PhoneBook(void):_contacts(0)
+{
+	std::cout << "---PHONEBOOK APP STARTED---" << std::endl;
+}
+PhoneBook::~PhoneBook(void)
+{
+	std::cout << "---PHONEBOOK APP ENDED---" << std::endl;
+}
 void PhoneBook::add(void)
 {
 	std::string data[] = {"First Name", "Last Name", "nickname" , "phone number"}; 
@@ -10,53 +18,53 @@ void PhoneBook::add(void)
 	{
 		while(1)
 		{
-			std::cout << "Ingrese el " << data[i] << ": ";
+			std::cout << "Enter " << data[i] << ": ";
 			std::getline(std::cin , data_contact[i]);			
 			if (data_contact[i].empty() == 0)
 				break;
 			else
-			   std::cout << "No ha ingresado ningun valor" << std::endl;
+			   std::cout << "No data has been entered" << std::endl;
 		}
 	}
-	move_contacts(contacts);
-	contactos[0].new_contact(data_contact[0],
+	move_contacts(_contacts);
+	_contact_list[0].new_contact(data_contact[0],
 							 data_contact[1],
 							 data_contact[2],
 							 data_contact[3]);
     
-	if(this->contacts < 8)
-		this->contacts++;
-	std::cout << "** Contacto creado **" << std::endl;
+	if(this->_contacts < 8)
+		this->_contacts++;
+	std::cout << "** Contact created **" << std::endl;
 }
 
 void PhoneBook::search(void)
 {
     int index;
 
-	if (contacts == 0)
-		std::cout << "No hay ningun registro" << std::endl;
+	if (_contacts == 0)
+		std::cout << "There is no record" << std::endl;
 	else
 	{
-		std::cout << "Ingrese el indice del contacto: ";
+		std::cout << "Enter index's contact: ";
 		std::cin >> index;
-		while(index > this->contacts || index == 0 || std::cin.fail())
+		while(index > this->_contacts || index == 0 || std::cin.fail())
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "indice incorrecto " << "hay "<< contacts 
-						<< " contactos registrados :";
+			std::cout << "Wrong index " << "There are "<< _contacts 
+						<< " registred contacts:";
 			std::cin >> index;	
 		}
-		this->contactos[index - 1].print_data();
+		this->_contact_list[index - 1].print_data();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 }
 
 void PhoneBook::print_intructions(void)
 {
-	std::cout << "Ingrese  ADD para agregar un contacto" << std::endl;
-	std::cout << "Ingrese  SEARCH para buscar un contacto" << std::endl;
-	std::cout << "Ingrese  EXIT para salir de la aplicacion" << std::endl;
+	std::cout << "Enter  ADD to add a contact" << std::endl;
+	std::cout << "enter  SEARCH to search a contact" << std::endl;
+	std::cout << "Enter  EXIT exit the app" << std::endl;
 }
 
 void PhoneBook::move_contacts(int contacts)
@@ -64,15 +72,6 @@ void PhoneBook::move_contacts(int contacts)
 	for (int i = contacts ; i > 0; i--)
 	{
 		if (i < 8)
-			contactos[i] = contactos[i - 1];
+			_contact_list[i] = _contact_list[i - 1];
 	}
 }
-
-// {
-// 	std::string text = "01234567891";
-// 	if (text.size() > 10)
-// 		std::cout << std::setfill('.') << std::setw(10) << std::left << text.substr(0,9) << "|" << std::endl;
-// 	else
-// 		std::cout << std::setw(10) << text << "|" << std::endl;
-// 	return(0);
-// }
