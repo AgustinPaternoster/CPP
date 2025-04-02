@@ -15,6 +15,7 @@ class Zombie
 		void announce(void)const;
 		
 		std::string getName(void)const;
+		void setName(std::string name);
 		
 	private:
 		std::string _name;

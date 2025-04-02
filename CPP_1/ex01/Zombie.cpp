@@ -39,3 +39,8 @@ void Zombie::announce(void)const
 {
 	std::cout << getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
+
+void Zombie::setName(std::string name)
+{
+	_name = name;
+}

@@ -1,4 +1,4 @@
-CFLAGS =  -Wall -Wextra -Werror -std=c++98 -g #-fsanitize=address
+CFLAGS =  -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 CC = c++
 FILES = main.cpp Zombie.cpp zombieHorde.cpp
 NAME = zombie
