@@ -11,7 +11,7 @@ $(NAME)	: $(FILES) Makefile
 
 clean	:
 
-clean	: 
+fclean	: 
 		rm $(NAME)
 
-re		: flclean all
+re		: fclean all

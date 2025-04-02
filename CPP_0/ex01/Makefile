@@ -8,7 +8,7 @@ all : $(NAME)
 
 
 $(NAME)	: $(FILES) $(HEADERS) Makefile
-		$(CC) $(CFLAGS) $(FILES) $(HEADERS) -g -o $(NAME)
+		$(CC) $(CFLAGS) $(FILES) -o $(NAME)
 
 clean	:
 

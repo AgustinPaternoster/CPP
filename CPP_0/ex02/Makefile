@@ -1,7 +1,6 @@
-#CFLAGS =  -Wall -Wextra -Werror -std=c++98
-CFLAGS =  -std=c++98
-CC = c++
-FILES = Account.cpp test.cpp
+CFLAGS =  -Wall -Wextra -Werror -std=c++98
+CC = g++
+FILES = Account.cpp tests.cpp
 NAME = account
 HEADERS = Account.hpp
 
@@ -9,7 +8,7 @@ all : $(NAME)
 
 
 $(NAME)	: $(FILES) $(HEADERS) Makefile
-		$(CC) $(CFLAGS) $(FILES) $(HEADERS) -g -o $(NAME)
+		$(CC) $(CFLAGS) $(FILES) -o $(NAME)
 
 clean	:
 
