@@ -11,7 +11,7 @@ class HumanA
 		HumanA(HumanA const & rsc);
 		~HumanA(void);
 
-		HumanA & operator=(HumanA const & rsc);
+		//HumanA & operator=(HumanA const & rsc);
 
 		void attack(void);
 
