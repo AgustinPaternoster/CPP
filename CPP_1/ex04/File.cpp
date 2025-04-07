@@ -1,4 +1,4 @@
-#include "File.Hpp"
+#include "File.hpp"
 #include <iostream>
 
 File::File(std::ifstream& infile, std::ofstream& outfile, std::string fname)
@@ -9,12 +9,12 @@ File::~File(void)
 	std::cout << "File close" <<  std::endl;
 }
 
-void File::openFile(void)
+bool File::openFile(void)
 {
 	int size;
 
 	
-	_infile.open(_filename);
+	_infile.open(_filename.c_str());
 	if (_infile.is_open())
 	{
 		_infile.seekg(0, _infile.end);
@@ -24,10 +24,15 @@ void File::openFile(void)
 		_infile.read(buffer, size);
 		buffer[size] = '\0';
 		_text = buffer;
+		_infile.close();
+		return (true);
 	}
 	else
+	{
 		std::cout << "Failed to open the file: " << _filename << std::endl;
-	//cerrar el archivo	 
+		return (false);
+	}
+
 }
 
 void File::replace(std::string s1, std::string s2)
@@ -49,21 +54,24 @@ void File::replace(std::string s1, std::string s2)
 	}
 }
 
-void File::saveFile(void)
+bool File::saveFile(void)
 {
 	std::string newfile;
 	const char * tmp;
 
 	newfile = _filename + ".replace";
-	_outfile.open(newfile);
+	_outfile.open(newfile.c_str());
 	if (_outfile.is_open())
 	{
 		tmp = _text.c_str();
 		_outfile.write(tmp, _text.size());
+		_outfile.close();
+		return (true);
 	}
 	else
+	{
 		std::cout << "Failed to open the file: " << newfile << std::endl;
-
-
+		return (false);
+	}
 }
-// File(std::string s1, std::string s2, std::ifstream infile)
+

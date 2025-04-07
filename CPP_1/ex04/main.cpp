@@ -1,27 +1,17 @@
+#include "File.hpp"
 #include <iostream>
-#include <fstream>
 
-int main(void)
+int main(int arc, char **argv)
 {
-	// std::ifstream	ifs("number");
-	// unsigned int	dst;
-	// unsigned int	dst2;
-	// ifs >> dst >> dst2;
-
-	// std::cout << dst << " " << dst2 << std::endl;
-	// ifs.close();
+	(void)arc;
+	std::ifstream	infile;
+	std::ofstream	outfile;
+	File 			file(infile, outfile, argv[1]);
 	
-	// // ------------
-
-	// std::ofstream 	ofs("tes.out");
-
-	// ofs << "esto es una prueba";
-	// ofs.close();
-
-	std::string  input;
-	std::ifstream  file;
-	file.open("test");
-	file >> input;
-	std::cout << file.gcount() << std::endl;
+	if (!file.openFile())
+		return (1);
+	file.replace(argv[2], argv[3]);
+	if (!file.saveFile())
+		return (2);
 	return (0);
 }
