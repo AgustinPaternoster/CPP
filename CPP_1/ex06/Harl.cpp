@@ -42,9 +42,7 @@ void Harl::printmsg(void)
 void Harl::complain(std::string level)
 {
 	int lvl = -1;
-	typedef void (Harl::*fnpointer)(void);
 	std::string levels[4] = {"debug", "info", "warning", "error"};
-	fnpointer fnp[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
 	for (int i = 0 ; i < 4 ; i++)
 	{
@@ -52,13 +50,32 @@ void Harl::complain(std::string level)
 			lvl = i;
 	}
 	
-	if (lvl >= 0 && lvl <=3)
+	switch (lvl)
 	{
-		for(int i = lvl; i < 4; i++)
-			(this->*fnp[i])();
-		return ;
-	}
-	printmsg();
-
-	
+		case 0:
+			{
+				this->debug();
+				lvl++;
+			}
+		case 1:
+			{
+				this->info();
+				lvl++;
+			}
+			case 2:
+			{
+				this->warning();
+				lvl++;
+			}
+			case 3:
+			{
+				this->error();
+				break;
+			}
+			default:
+			{
+				this->printmsg();
+				break;
+			}
+		}	
 }
