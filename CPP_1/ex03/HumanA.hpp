@@ -8,7 +8,6 @@ class HumanA
 	public:
 
 		HumanA(std::string name, Weapon& weapon);
-		HumanA(HumanA const & rsc);
 		~HumanA(void);
 
 

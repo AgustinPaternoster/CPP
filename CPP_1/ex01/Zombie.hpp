@@ -7,11 +7,9 @@ class Zombie
 {
 	public:
 		Zombie(void);
-		Zombie(std::string const name);
-		Zombie(Zombie const &rsc);
 		~Zombie(void);
+		Zombie(std::string const name);
 
-		Zombie & operator=(Zombie const &rsc);
 		void announce(void)const;
 		
 		std::string getName(void)const;

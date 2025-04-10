@@ -8,7 +8,6 @@ class HumanB
     public:
 
         HumanB(std::string name);
-        HumanB(HumanB const & rsc);
         ~HumanB(void);
 
         void attack(void);
