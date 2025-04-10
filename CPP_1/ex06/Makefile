@@ -8,10 +8,6 @@ MODE = none
 
 all : $(NAME)
 
-ifeq ($(MODE),noflag)
-	CFLAGS = -g -fsanitize=address
-endif
-
 $(NAME)	: $(FILES) $(HEADERS) Makefile
 		$(CC) $(CFLAGS) $(FILES) -o $(NAME)
 

@@ -4,6 +4,12 @@
 int main(int arc, char **argv)
 {
 	(void)arc;
+	if (arc != 4)
+	{	
+		std::cout << "wrong numbers of arguments" << std::endl;
+		return (1);
+	}
+
 	std::ifstream	infile;
 	std::ofstream	outfile;
 	File 			file(infile, outfile, argv[1]);

@@ -2,11 +2,6 @@
 #include <iostream>
 #include <string>
 
-Zombie::Zombie(void):_name("")
-{
-	std::cout << "new zombie" << std::endl;
-}
-
 Zombie::Zombie(std::string const name):_name(name)
 {
 	std::cout << "new zombie named " << getName() << std::endl;

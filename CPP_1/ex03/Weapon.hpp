@@ -7,10 +7,8 @@
 	public:
 
 	Weapon(std::string type);
-	Weapon(Weapon const &rsc);
 	~Weapon(void);
 
-	Weapon & operator=(Weapon const &rsc);
 	
 	std::string const & getType(void);
 	void setType(std::string type);
