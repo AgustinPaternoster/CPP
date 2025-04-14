@@ -3,21 +3,29 @@
 #define __FIXED_H__
 
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
 	public:
 		Fixed(void);
+		Fixed(const int i_nb);
+		Fixed(const float f_nb);
 		~Fixed(void);
 		Fixed(const Fixed& scr);
 		
+
 		Fixed& 	operator=(const Fixed& scr);
 		int		getRawBits(void)const;
 		void	setRawBits(int const raw);
+		float	toFloat(void)const;
+		int		toInt(void)const;
 
 	private:
 		static const int	_fractionalBits = 8;
 		int					_fixedPoint;
+
 };
 
+std::ostream & operator<<(std::ostream & o, Fixed const & rsc);
 #endif
