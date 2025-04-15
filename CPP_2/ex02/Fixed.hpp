@@ -16,6 +16,18 @@ class Fixed
 		
 
 		Fixed& 	operator=(const Fixed& scr);
+		Fixed	operator+(const Fixed& scr);
+		Fixed	operator-(const Fixed& scr);
+		Fixed	operator*(const Fixed& scr);
+		Fixed	operator/(const Fixed& scr);
+		bool 	operator<(const Fixed& src)const;
+		bool 	operator>(const Fixed& src)const;
+		bool 	operator>=(const Fixed& src)const;
+		bool 	operator<=(const Fixed& src)const;
+		bool 	operator==(const Fixed& src)const;
+		bool 	operator!=(const Fixed& src)const;
+
+
 		int		getRawBits(void)const;
 		void	setRawBits(int const raw);
 		float	toFloat(void)const;

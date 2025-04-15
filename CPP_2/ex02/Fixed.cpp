@@ -42,6 +42,50 @@ Fixed& Fixed::operator=(const Fixed& scr)
 	return (*this);
 };
 
+Fixed Fixed::operator+(const Fixed& src)
+{
+	Fixed tmp;
+	tmp.setRawBits(this->_fixedPoint + src._fixedPoint);
+	return (tmp);
+}
+
+Fixed Fixed::operator+(const Fixed& src)
+{
+	Fixed tmp;
+	tmp.setRawBits(this->_fixedPoint - src._fixedPoint);
+	return (tmp);
+}
+
+bool Fixed::operator<(const Fixed& src)const
+{
+	return (this->getRawBits() < src.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed& src)const
+{
+	return (this->getRawBits() <= src.getRawBits());
+}
+
+bool Fixed::operator>(const Fixed& src)const
+{
+	return (this->getRawBits() > src.getRawBits());
+}
+
+bool Fixed::operator>=(const Fixed& src)const
+{
+	return (this->getRawBits() >= src.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed& src)const
+{
+	return (this->getRawBits() == src.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed& src)const
+{
+	return (this->getRawBits() != src.getRawBits());
+}
+
 int Fixed::getRawBits(void)const
 {
 	return (_fixedPoint);
