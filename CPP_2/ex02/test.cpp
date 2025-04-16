@@ -3,14 +3,19 @@
 
 	int main(void)
 {
-	int x = roundf(3.7 * 256);
-	int y = roundf(3.7 * 256);
-	int result = x * y;
+	int x = roundf(4.3 * 256);
+	int y = roundf(2.5 * 256);
+	float f = (float)x / y;
+	int result = roundf( f * 256);
+	std::cout << "x:" << x << std::endl;
+	std::cout << "y:" << y <<  std::endl;
+	
 	// float y = (float)(x+2) / 256;
 	// std::cout << "x:" <<(double) 315906 / 256  << std::endl;
 	std::cout.precision(5);
+	// std::cout << "f:" << f <<  std::endl;
 	std::cout << std::fixed << result << std::endl;
-	std::cout << std::fixed << (float)result / (256 * 256)<< std::endl;
+	std::cout << std::fixed << (float)result / 256<< std::endl;
 	
 }
 // }

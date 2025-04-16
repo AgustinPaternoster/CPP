@@ -16,17 +16,25 @@ class Fixed
 		
 
 		Fixed& 	operator=(const Fixed& scr);
-		Fixed	operator+(const Fixed& scr);
-		Fixed	operator-(const Fixed& scr);
-		Fixed	operator*(const Fixed& scr);
-		Fixed	operator/(const Fixed& scr);
+		Fixed	operator+(const Fixed& scr)const;
+		Fixed	operator-(const Fixed& scr)const;
+		Fixed	operator*(const Fixed& scr)const;
+		Fixed	operator/(const Fixed& scr)const;
 		bool 	operator<(const Fixed& src)const;
 		bool 	operator>(const Fixed& src)const;
 		bool 	operator>=(const Fixed& src)const;
 		bool 	operator<=(const Fixed& src)const;
 		bool 	operator==(const Fixed& src)const;
 		bool 	operator!=(const Fixed& src)const;
+		Fixed&	operator++(void);
+		Fixed	operator++(int);
+		Fixed&	operator--(void);
+		Fixed	operator--(int);
 
+		static const Fixed&	min(const Fixed& numA , const Fixed& numB1);
+		static 	Fixed&	min(Fixed& numA , Fixed& numB1);
+		static const Fixed&	max(const Fixed& numA , const Fixed& numB1);
+		static 	Fixed&	max(Fixed& numA , Fixed& numB1);
 
 		int		getRawBits(void)const;
 		void	setRawBits(int const raw);
@@ -40,4 +48,5 @@ class Fixed
 };
 
 std::ostream & operator<<(std::ostream & o, Fixed const & rsc);
+
 #endif
