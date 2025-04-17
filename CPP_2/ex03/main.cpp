@@ -4,14 +4,12 @@
 
 // bool checkPoint(const Point a, const Point b, const Point toCheck);
 
-bool checkPoint(const Point& a, const Point& b, const Point& toCheck)
+static int checkPoint(const Point& a, const Point& b, const Point& toCheck)
 {
 	Fixed line = (a.getY() - b.getY()) * toCheck.getX() +
 				(b.getX() - a.getX()) * toCheck.getY() +
 				(a.getX() * b.getY()) - (b.getX() * a.getY());
-	std::cout << "check:" << line << std::endl;
-	
-	return (0);
+	return (line.getRawBits());
 }
 
 int main (void)
