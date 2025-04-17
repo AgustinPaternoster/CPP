@@ -2,7 +2,7 @@
 
 Fixed::Fixed(void)
 {
-		std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	_fixedPoint = 0;
 };
 
@@ -20,7 +20,7 @@ Fixed::Fixed(const float f_nb)
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Fixed destructor called" << std::endl;
 };
 
 Fixed::Fixed(const Fixed& scr)
