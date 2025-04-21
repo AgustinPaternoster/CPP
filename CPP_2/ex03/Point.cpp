@@ -14,6 +14,7 @@ Point::~Point(void)
 Point& Point::operator=(const Point& rsc)
 {
 	std::cerr << "Can not use = operator in const attributes" << std::endl;
+	(void)rsc;
 	return (*this);
 }
 

@@ -2,23 +2,18 @@
 #include "Fixed.hpp"
 #include <iostream>
 
-// bool checkPoint(const Point a, const Point b, const Point toCheck);
-
-static int checkPoint(const Point& a, const Point& b, const Point& toCheck)
-{
-	Fixed line = (a.getY() - b.getY()) * toCheck.getX() +
-				(b.getX() - a.getX()) * toCheck.getY() +
-				(a.getX() * b.getY()) - (b.getX() * a.getY());
-	return (line.getRawBits());
-}
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 int main (void)
 {
-    Point a(1.0f, 1.0f);
-	Point b(3.0f, 3.0f);
-	Point check(3.0f , 2.0f);
+    Point const a(2.0f, 2.0f);
+	Point const b(7.0f, 7.0f);
+	Point const c(12.0f , 2.0f);
+	Point const point(2.0f , 2.0f);
 
-	std::cout << "result:" << checkPoint(b,a,check) << std::endl;
-
+	if (bsp(a,b,c,point))
+		std::cout << "-- the point is inside -- " << std::endl;
+	else
+		std::cout << "-- the point is outside -- " << std::endl;
     return (0);
 }

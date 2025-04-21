@@ -2,7 +2,7 @@
 
 Fixed::Fixed(void)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 	_fixedPoint = 0;
 };
 
