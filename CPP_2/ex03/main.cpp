@@ -9,7 +9,7 @@ int main (void)
     Point const a(2.0f, 2.0f);
 	Point const b(7.0f, 7.0f);
 	Point const c(12.0f , 2.0f);
-	Point const point(2.0f , 2.0f);
+	Point const point(4.0f , 3.9f);
 
 	if (bsp(a,b,c,point))
 		std::cout << "-- the point is inside -- " << std::endl;
