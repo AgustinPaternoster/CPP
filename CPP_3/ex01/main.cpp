@@ -3,11 +3,15 @@
 #include <iostream>
 
 int main(void)
-{;
-	ClapTrap test("hola");
-	ScavTrap test2;
-
-	(void)test2;
-	
+{
+	ScavTrap test("tester");
+	test.AttributesValues();
+	test.attack("enemy");
+	test.AttributesValues();
+	test.takeDamage(24);
+	test.AttributesValues();
+	test.beRepaired(10);
+	test.AttributesValues();
+	test.guardGate();
 	return (0);
 }

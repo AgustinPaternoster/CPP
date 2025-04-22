@@ -4,5 +4,11 @@
 		"plaintext": false,
 		"markdown": false,
 		"scminput": false
+	},
+	"files.associations": {
+		"*.sqlbook": "sql",
+		"*.ndjson": "jsonl",
+		"*.dbclient-js": "javascript",
+		"typeinfo": "cpp"
 	}
 }
