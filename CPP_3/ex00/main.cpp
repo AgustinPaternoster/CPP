@@ -8,9 +8,7 @@ int main(void)
 	ct.takeDamage(5);
 	ct.beRepaired(3);
 	
-	
-	ClapTrap ct_1(ct);
-	ct_1.AttributesValues();
+	ct.AttributesValues();
 
 
 	

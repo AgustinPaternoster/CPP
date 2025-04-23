@@ -1,6 +1,7 @@
 #ifndef __SCAVTRAP_H__
 #define __SCAVTRAP_H__
-	#include <string>
+
+#include <string>
 #include "ClapTrap.hpp"
 
 class ScavTrap: public ClapTrap
