@@ -1,14 +1,12 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
 
 int main(void)
 {
-	FragTrap testf("frag");
-	ScavTrap tests("scrav");
-	testf.AttributesValues();
-	tests.AttributesValues();
-
+	DiamondTrap test("hola");
+	test.AttributesValues();
 	return (0);
 }

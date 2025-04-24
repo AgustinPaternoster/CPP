@@ -3,6 +3,15 @@
 #include <iostream>
 #include <string>
 
+ScavTrap::ScavTrap(void)
+{
+	this->_name = "n/a";
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
+	std::cout << "ScavTrap " << this->getName() << " is created" <<  std::endl;
+}
+
 ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
 	this->_name = name;
