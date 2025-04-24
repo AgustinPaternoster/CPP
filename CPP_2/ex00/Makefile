@@ -1,4 +1,4 @@
-CFLAGS =  -Wall -Wextra -Werror -Wimplicit-fallthrough=0 -std=c++98 -g -fsanitize=address
+CFLAGS =  -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 CC = c++
 FILES = Fixed.cpp main.cpp 
 HEADERS = Fixed.hpp
