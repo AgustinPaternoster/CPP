@@ -3,7 +3,7 @@
 
 FragTrap::FragTrap(void)
 {
-	this->_name = "n\a";
+	this->_name = "n/a";
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;

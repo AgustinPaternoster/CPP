@@ -12,3 +12,8 @@ DiamondTrap::DiamondTrap(std::string name):ClapTrap(name + "_clap_name")
 	this->_attackDamage = FragTrap::_attackDamage;
 	std::cout << "DiamondTrap " << this->getName() << " is created" <<  std::endl;
 }
+
+DiamondTrap::~DiamondTrap(void)
+{
+	std::cout << "DiamondTrap " << this->getName() << " is destroyed" <<  std::endl;
+}
