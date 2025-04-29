@@ -10,7 +10,7 @@ FragTrap::FragTrap(std::string name):ClapTrap(name)
 	std::cout << "FragTrap " << this->getName() << " is created" <<  std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap& rhs):ClapTrap()
+FragTrap::FragTrap(const FragTrap& rhs):ClapTrap(rhs._name)
 {
 	if(this != &rhs)
 	{

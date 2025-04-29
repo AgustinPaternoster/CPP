@@ -16,7 +16,7 @@ ScavTrap::~ScavTrap(void)
 	std::cout << "ScavTrap " << getName() << " is destroyed" <<  std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& rhs):ClapTrap()
+ScavTrap::ScavTrap(const ScavTrap& rhs):ClapTrap(rhs._name)
 {
 	if (&rhs != this)
 	{
