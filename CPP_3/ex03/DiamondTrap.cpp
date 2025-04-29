@@ -7,9 +7,9 @@
 DiamondTrap::DiamondTrap(void):ClapTrap()
 {
 	this->_name = "n/a";
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 30;
+	this->_hitPoints = FragTrap::initHP;
+	this->_energyPoints = ScavTrap::initEP;
+	this->_attackDamage = FragTrap::initAD;
 	std::cout << "DiamondTrap " << this->getName() << " is created" <<  std::endl;
 }
 
@@ -17,9 +17,9 @@ DiamondTrap::DiamondTrap(std::string name):ClapTrap(name + "_clap_name") ,
 	ScavTrap(name + "_clap_name") ,FragTrap(name + "_clap_name")
 {
 	this->_name = name;
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 30;
+	this->_hitPoints = FragTrap::initHP;
+	this->_energyPoints = ScavTrap::initEP;
+	this->_attackDamage = FragTrap::initAD;
 	std::cout << "DiamondTrap " << this->getName() << " is created" <<  std::endl;
 }
 

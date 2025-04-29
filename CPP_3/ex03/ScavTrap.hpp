@@ -14,7 +14,12 @@ class ScavTrap: virtual public ClapTrap
 
         ScavTrap& operator=(const ScavTrap& rhs);
 		void attack(const std::string& target);
-        void guardGate(void);        
+        void guardGate(void);
+	
+	protected:
+		static const int initAD;
+		static const int initEP;
+		static const int initHP;
 };
 
 #endif

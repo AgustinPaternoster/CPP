@@ -3,21 +3,25 @@
 #include <iostream>
 #include <string>
 
+const int ScavTrap::initAD = 100;
+const int ScavTrap::initEP = 50;
+const int ScavTrap::initHP = 100;
+
 ScavTrap::ScavTrap(void)
 {
 	this->_name = "n/a";
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
+	this->_hitPoints = ScavTrap::initHP;
+	this->_energyPoints = ScavTrap::initEP;
+	this->_attackDamage = ScavTrap::initAD;
 	std::cout << "ScavTrap " << this->getName() << " is created" <<  std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
 	this->_name = name;
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
+	this->_hitPoints = ScavTrap::initHP;
+	this->_energyPoints = ScavTrap::initEP;
+	this->_attackDamage = ScavTrap::initAD;
 	std::cout << "ScavTrap " << this->getName() << " is created" <<  std::endl;
 }
 
