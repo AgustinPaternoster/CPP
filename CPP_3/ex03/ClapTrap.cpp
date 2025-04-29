@@ -23,7 +23,7 @@ ClapTrap::ClapTrap(const ClapTrap& rhs)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "ClapTrap " << this->getName() << " is destroyed" <<  std::endl;
+	std::cout << "ClapTrap " << getName() << " is destroyed" <<  std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& rhs)
@@ -40,7 +40,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& rhs)
 
 std::string ClapTrap::getName(void)const
 {
-	return (_name);
+	return (this->_name);
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -92,8 +92,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 void ClapTrap::AttributesValues(void)
 {
-	std::cout << "name:" << _name << std::endl
+	std::cout << "name:" << this->getName() << std::endl
 			  << "_hitpoints: " << _hitPoints << std::endl
 			  << "_energy Points: " << _energyPoints << std::endl
-			  << "attack damage: " << _attackDamage << std::endl;
+			  << "_attack damage: " << _attackDamage << std::endl;
 }

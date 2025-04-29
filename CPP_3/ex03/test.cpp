@@ -3,17 +3,23 @@
 class base
 {
 	public:
-		base(void):i(10)
+		base(void):_name("n/a")
 		{
-			std::cout << "base constructor" << std::endl;
+			std::cout << "base constructor " << this->_name << std::endl;
 		}
-		base(int nb):i(nb)
+		base(std::string name):_name(name)
 		{
-			std::cout << "base constructor" << std::endl;
+			std::cout << "base constructor " << this->_name << std::endl;
+		}
+		~base(void)
+		{
+			std::cout << "base destructor " << this->_name << std::endl;
+
 		}
 
+
 	protected:
-		int i;
+		std::string _name;
 };
 
 class child_b1: virtual public base
@@ -21,8 +27,20 @@ class child_b1: virtual public base
 	public:
 		child_b1(void)
 		{
-			this->i = 30;
-			std::cout << "child_b1 constructor" << std::endl;
+			_name = "n/a";
+			std::cout << "child_b1 cosntructor " << this->_name << std::endl;
+
+		}
+		child_b1(std::string name)
+		{
+			_name = name;
+			std::cout << "child_b1 cosntructor " << this->_name << std::endl;
+
+		}
+		~child_b1(void)
+		{
+			std::cout << "child_b1 destructor " << this->_name << std::endl;
+
 		}
 
 };
@@ -32,8 +50,20 @@ class child_b2: virtual public base
 	public:
 		child_b2(void)
 		{
-			this->i = 50;
-			std::cout << "child_b2 constructor" << std::endl;
+			_name = "n/a";
+			std::cout << "child_b2 cosntructor " << this->_name << std::endl;
+
+		}
+		child_b2(std::string name)
+		{
+			_name = name;
+			std::cout << "child_b2 cosntructor " << this->_name << std::endl;
+
+		}
+		~child_b2(void)
+		{
+			std::cout << "child_b2 destructor " << this->_name << std::endl;
+
 		}
 
 };
@@ -41,17 +71,21 @@ class child_b2: virtual public base
 class derivated : public child_b1 , public child_b2
 {
 	public:
-		derivated(int n) : base(0)
+		derivated(std::string name) : base(name + "xxx"),_name(name)
 		{
-			this->i = n;
+			std::cout << "derivada cosntructor " << this->_name << std::endl;
+		}
+		~derivated(void)
+		{
+			std::cout << "derivada destructor " << this->_name << std::endl;
 		}
 	
 	private:
-		int i;
+		std::string _name;
 };
 
 int main(void)
 {
-	derivated test(10);
+	derivated test("hola");
 	return (0);
 }

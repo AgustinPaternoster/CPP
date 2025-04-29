@@ -7,6 +7,6 @@
 int main(void)
 {
 	DiamondTrap test("hola");
-	test.AttributesValues();
+	test.whoAmI();
 	return (0);
 }
