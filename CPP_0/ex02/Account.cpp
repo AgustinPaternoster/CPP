@@ -93,7 +93,7 @@ int Account::checkAmount(void)const
 {
 	return (this->_amount);
 }
-
+`
 void Account::displayStatus(void)const
 {
 	_displayTimestamp();

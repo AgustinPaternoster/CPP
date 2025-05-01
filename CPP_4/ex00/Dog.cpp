@@ -25,7 +25,7 @@ Dog& Dog::operator=(const Dog& rsc)
 	return (*this);
 }
 
-void makeSound(void)
+void Dog::makeSound(void)const
 {
 	std::cout << "Dog making sounds" << std::endl;
 }
