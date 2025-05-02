@@ -11,6 +11,6 @@ int main(void)
 
 	delete j;
 	delete i;
-		
+	
 	return (0);
 }

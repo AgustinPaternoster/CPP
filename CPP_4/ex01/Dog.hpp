@@ -3,6 +3,8 @@
 #include <string>
 #include "Animal.hpp"
 #include "Brain.hpp"
+	
+#include <iostream>
 
 class Dog: public Animal
 {
@@ -13,7 +15,7 @@ class Dog: public Animal
 
 		Dog& operator=(const Dog& rsc);
 		void makeSound (void)const;
-	
+
 	private:
 		Brain *_brain;
 };
