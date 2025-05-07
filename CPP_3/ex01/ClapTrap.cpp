@@ -17,6 +17,7 @@ ClapTrap::ClapTrap(const ClapTrap& rhs)
 {
 	if (this != &rhs)
 	{
+		std::cout << "ClapTrap " << getName() << " is created" <<  std::endl;
 		*this = rhs;
 	}
 }
@@ -92,8 +93,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 void ClapTrap::AttributesValues(void)
 {
-	std::cout << "name:" << _name << std::endl
-			  << "_hitpoints: " << _hitPoints << std::endl
-			  << "_energy Points: " << _energyPoints << std::endl
-			  << "attack damage: " << _attackDamage << std::endl;
+	std::cout << "-name:" << _name << std::endl
+			  << "-hitpoints: " << _hitPoints << std::endl
+			  << "-energy Points: " << _energyPoints << std::endl
+			  << "-attack damage: " << _attackDamage << std::endl;
 }

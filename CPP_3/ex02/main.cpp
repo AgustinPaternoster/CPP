@@ -5,10 +5,15 @@
 
 int main(void)
 {
-	FragTrap testf("frag");
-	ScavTrap tests("scrav");
-	testf.AttributesValues();
-	tests.AttributesValues();
+	FragTrap ft;
+	FragTrap test("tester");
+	test.AttributesValues();
+	test.attack("enemy");
+	test.highFivesGuys();
+	ft.AttributesValues();
+	ft = test;
+	ft.AttributesValues();
+	FragTrap ft2(ft);
 
 	return (0);
 }

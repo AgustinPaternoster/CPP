@@ -4,7 +4,8 @@
 #include "DiamondTrap.hpp"
 #include <iostream>
 
-DiamondTrap::DiamondTrap(void):ClapTrap()
+DiamondTrap::DiamondTrap(void):ClapTrap("n/a_clap_name") ,
+	ScavTrap() ,FragTrap()
 {
 	this->_name = "n/a";
 	this->_hitPoints = FragTrap::initHP;
@@ -14,7 +15,7 @@ DiamondTrap::DiamondTrap(void):ClapTrap()
 }
 
 DiamondTrap::DiamondTrap(std::string name):ClapTrap(name + "_clap_name") ,
-	ScavTrap(name + "_clap_name") ,FragTrap(name + "_clap_name")
+	ScavTrap(name) ,FragTrap(name)
 {
 	this->_name = name;
 	this->_hitPoints = FragTrap::initHP;

@@ -6,12 +6,16 @@
 
 int main(void)
 {
-	DiamondTrap d1("diamond");
-	FragTrap f1("frag");
-	ClapTrap c1("clap");
-	f1.takeDamage(15);
-	f1.AttributesValues();
+	DiamondTrap d1;
+	DiamondTrap d2("diamond");
+	DiamondTrap d3(d1);
 	d1.whoAmI();
+	d1.AttributesValues();
+	d2.whoAmI();
+	d2.attack("enemy");
+	d2.AttributesValues();
+	d3.AttributesValues();
+	d1 = d2;
 	d1.AttributesValues();
 	return (0);
 }

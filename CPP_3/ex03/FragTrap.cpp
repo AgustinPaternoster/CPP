@@ -7,7 +7,6 @@ const int FragTrap::initAD = 30;
 
 FragTrap::FragTrap(void)
 {
-	this->_name = "n/a";
 	this->_hitPoints = FragTrap::initHP;
 	this->_energyPoints = FragTrap::initEP;
 	this->_attackDamage = FragTrap::initAD;
@@ -16,7 +15,6 @@ FragTrap::FragTrap(void)
 
 FragTrap::FragTrap(std::string name):ClapTrap(name)
 {
-	this->_name = name;
 	this->_hitPoints = FragTrap::initHP;
 	this->_energyPoints = FragTrap::initEP;
 	this->_attackDamage = FragTrap::initAD;
@@ -27,6 +25,7 @@ FragTrap::FragTrap(const FragTrap& rhs):ClapTrap()
 {
 	if(this != &rhs)
 	{
+		std::cout << "FragTrap " << this->getName() << " is created" <<  std::endl;
 		*this = rhs;
 	}
 }

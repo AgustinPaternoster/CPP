@@ -3,6 +3,14 @@
 #include <iostream>
 #include <string>
 
+ScavTrap::ScavTrap(void)
+{
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
+	std::cout << "ScavTrap " << this->getName() << " is created" <<  std::endl;
+}
+
 ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
 	this->_name = name;
@@ -21,6 +29,7 @@ ScavTrap::ScavTrap(const ScavTrap& rhs):ClapTrap()
 {
 	if (&rhs != this)
 	{
+		std::cout << "ScavTrap " << getName() << " is destroyed" <<  std::endl;
 		*this = rhs;
 	}
 }
