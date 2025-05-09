@@ -32,3 +32,13 @@ void Dog::makeSound(void)const
 {
 	std::cout << "Dog making sounds" << std::endl;
 }
+
+std::string Dog::getIdea(int nbIdea)
+{
+	return(_brain->getIdea(nbIdea));
+}
+
+void Dog::setIdea(std::string idea)
+{
+	_brain->setIdea(idea);
+}

@@ -15,6 +15,8 @@ class Dog: public Animal
 
 		Dog& operator=(const Dog& rsc);
 		void makeSound (void)const;
+		std::string getIdea(int nbIdea);
+		void setIdea(std::string idea);
 
 	private:
 		Brain *_brain;

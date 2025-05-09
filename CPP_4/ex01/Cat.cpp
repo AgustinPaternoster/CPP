@@ -35,7 +35,7 @@ void Cat::makeSound(void)const
 
 std::string Cat::getIdea(int nbIdea)
 {
-	_brain->getIdea(nbIdea);
+	return(_brain->getIdea(nbIdea));
 }
 
 void Cat::setIdea(std::string idea)
