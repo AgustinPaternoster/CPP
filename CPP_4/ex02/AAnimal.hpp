@@ -2,15 +2,15 @@
 #define __AANIMAL_H__
 #include <string>
 
-class Animal
+class AAnimal
 {
 	public:
-		Animal(void);
-		Animal(std::string type);
-		Animal(const Animal& rsc);
-		virtual ~Animal(void);
+		AAnimal(void);
+		AAnimal(std::string type);
+		AAnimal(const AAnimal& rsc);
+		virtual ~AAnimal(void);
 
-		Animal& operator=(const Animal& rsc);
+		AAnimal& operator=(const AAnimal& rsc);
 		virtual void makeSound(void)const = 0;
 		std::string getType(void)const;
 

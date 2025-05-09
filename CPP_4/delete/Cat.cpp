@@ -32,13 +32,3 @@ void Cat::makeSound(void)const
 {
 	std::cout << "Cat making sounds" << std::endl;
 }
-
-std::string Cat::getIdea(int nbIdea)
-{
-	return(_brain->getIdea(nbIdea));
-}
-
-void Cat::setIdea(std::string idea)
-{
-	_brain->setIdea(idea);
-}

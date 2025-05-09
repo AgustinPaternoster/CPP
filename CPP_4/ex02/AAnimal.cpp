@@ -1,31 +1,31 @@
 #include "AAnimal.hpp"
 #include <iostream>
 
-Animal::Animal(void):_type("n/a")
+AAnimal::AAnimal(void):_type("n/a")
 {
-	std::cout << "Animal has been created" << std::endl;
+	std::cout << "AAnimal has been created" << std::endl;
 }
 
-Animal::Animal(std::string type): _type(type)
+AAnimal::AAnimal(std::string type): _type(type)
 {
-	std::cout << "Animal has been created" << std::endl;
+	std::cout << "AAnimal has been created" << std::endl;
 }
 
-Animal::Animal(const Animal& rsc)
+AAnimal::AAnimal(const AAnimal& rsc)
 {
 	if(this != &rsc)
 	{
 		*this = rsc;
-		std::cout << "Animal has been created" << std::endl;
+		std::cout << "AAnimal has been created" << std::endl;
 	}
 }
 
-Animal::~Animal(void)
+AAnimal::~AAnimal(void)
 {
-	std::cout << "Animal has been destroyed" << std::endl;
+	std::cout << "AAnimal has been destroyed" << std::endl;
 }
 
-Animal& Animal::operator=(const Animal& rsc)
+AAnimal& AAnimal::operator=(const AAnimal& rsc)
 {
 	if(this != &rsc)
 	{
@@ -34,7 +34,7 @@ Animal& Animal::operator=(const Animal& rsc)
 	return (*this);
 }
 
-std::string Animal::getType(void)const
+std::string AAnimal::getType(void)const
 {
 	return(_type);
 }

@@ -3,6 +3,7 @@
 #include <string>
 #include "AAnimal.hpp"
 #include "Brain.hpp"
+
 class Cat: public AAnimal
 {
 	public:
@@ -12,8 +13,6 @@ class Cat: public AAnimal
 
 		Cat& operator=(const Cat& rsc);
 		void makeSound(void)const;
-		std::string getIdea(int nbIdea);
-		void setIdea(std::string idea);
 
 	private:
 		Brain *_brain;

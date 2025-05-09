@@ -6,12 +6,24 @@
 
 int main(void)
 {
-	const Animal *arr[4]= {new Cat(), new Dog(), new Cat(), new Dog()};
+	
+	// AAnimal an;
+	
+	const AAnimal* array[6];
+	
+	for (int i = 0; i < 6; i++)
+	{
+		if(i % 2 == 0)
+			array[i] = new Dog();
+		else
+			array[i] = new Cat();
+	}
 
-	for (int i = 0; i < 4; i++)
-		arr[i]->makeSound();
-	for (int i = 0; i < 4 ; i++)
-		delete arr[i];
+	for (int i = 0; i < 6; i++)
+		array[i]->makeSound();
+	
+	for (int i = 0; i < 6; i++)
+		delete array[i];
 	
 	return (0);
 }

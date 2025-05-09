@@ -31,12 +31,10 @@ Brain& Brain::operator=(const Brain& rsc)
 
 std::string Brain::getIdea(int ideaNb)
 {
-	if (_getNbIdeas() == 0 && ideaNb > 0 )
-		return ("no ideas created");
-	if (ideaNb > _getNbIdeas())
-		return ("no idea with this number");
+	if (ideaNb >= _getNbIdeas())
+		return(_ideas[_getNbIdeas() - 1]);
 	if (ideaNb <= 0)
-		return ("wrong number" );
+		return(_ideas[0]);
 	return(_ideas[ideaNb - 1]);
 }
 
