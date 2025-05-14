@@ -9,7 +9,7 @@ Dog::Dog(void):AAnimal("Dog"), _brain(new Brain())
 Dog::Dog(const Dog& rsc): AAnimal(rsc)
 {
 		std::cout << "Dog has been created" << std::endl;
-		this->_brain = new Brain();
+		this->_brain = new Brain(*rsc._brain);
 }
 
 Dog::~Dog(void)
@@ -23,7 +23,8 @@ Dog& Dog::operator=(const Dog& rsc)
 	if (this != &rsc)
 	{
 		this->_type = rsc._type;
-		this->_brain = new Brain();
+		delete this->_brain;
+		this->_brain = new Brain(*rsc._brain);
 	}
 	return (*this);
 }
