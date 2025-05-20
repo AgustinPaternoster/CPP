@@ -1,6 +1,7 @@
 #ifndef __ICHARACTER_H__
 #define __ICHARACTER_H__
 #include <string>
+#include "AMateria.hpp"
 
 class ICharacter
 {
