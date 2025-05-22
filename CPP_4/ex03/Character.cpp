@@ -10,19 +10,42 @@ Character::Character(std::string name):_name(name)
 
 Character::Character(const Character& other):_name(other._name)
 {
-	// completar
-	std::cout << "character " << _name << " copied" << std::endl;
+	if (this != &other)
+	{
+		for (int i = 0 ; i < 3; i++)
+		{	
+			if (other._inventory[i] != NULL)
+				this->_inventory[i] = other._inventory[i]->clone();	
+			else		
+				_inventory[i] = NULL;
+		}	
+		std::cout << "character " << _name << " copied" << std::endl;
+	}
 }
 
 Character::~Character(void)
 {
-	//completar
+	int i = 0;
+	while (i < 3 && _inventory[i] != NULL)
+	{
+		delete _inventory[i];
+		i++;
+	}
 	std::cout << "character " << _name << " destroyed" << std::endl;
 }
 
 Character& Character::operator=(const Character & other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		this->_name = other._name;
+		int i = 0;
+		while (i < 3 && other._inventory[i] != NULL)
+		{
+			this->_inventory[i] = other._inventory[i]->clone(); 
+			i++;
+		}
+	}
 	return(*this);
 }
 
@@ -57,3 +80,13 @@ void Character::use(int idx, ICharacter& target)
 	(void)target;
 	// copletar
 }
+
+void Character::showMeMaterias(void)
+{
+	int i = 0;
+	while (i < 3 && _inventory[i] != NULL)
+	{
+		std::cout << "materia :" << _inventory[i]->getType() << std::endl;
+		i++;
+	}
+}	

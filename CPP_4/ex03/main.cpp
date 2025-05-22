@@ -6,19 +6,19 @@
 
 int main(void)
 {
-    Ice ice;
-	Cure cure;
-	Character charac("test");
-	AMateria *test[5];
-	test[0] = ice.clone();
-	test[1] = cure.clone(); 
-	test[2] = ice.clone();
-	test[3] = cure.clone(); 
-	test[4] = cure.clone(); 
-	for (int i = 0 ; i < 5 ; i++)
-		charac.equip(test[i]);
-	for (int i = 0 ; i < 5 ; i++)
-		delete test[i];
+    int idx = 3;
 
+	Character ch1("ch1");
+	Character ch2("ch2");
+	AMateria *test[idx];
+	test[0] = new Ice();
+	test[1] = new Cure();
+	test[2] = new Cure();
+
+	for (int i = 0 ; i < idx ; i++)
+		ch1.equip(test[i]);
+	ch1.showMeMaterias();
+	ch2 = ch1;
+	ch2.showMeMaterias();
     return (0);
 }
