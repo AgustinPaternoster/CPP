@@ -85,10 +85,19 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	(void)idx;
-	(void)target;
-	// copletar
-}
+
+     if (idx < 0 || idx > 3 )
+     {
+             std::cout << "wrong idx number" << std::endl;
+             return;
+     }
+     if (_inventory[idx] == NULL)
+     {
+             std::cout << "no materia available" << std::endl;
+             return;
+     }
+     _inventory[idx]->use(target);
+}                                 
 
 void Character::showMeMaterias(void)
 {

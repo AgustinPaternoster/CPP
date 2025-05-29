@@ -1,4 +1,5 @@
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 #include <iostream>
 
 AMateria::AMateria (std::string const & type):_type(type)
@@ -28,4 +29,9 @@ AMateria::AMateria(AMateria const & other):_type(other._type)
 std::string const & AMateria::getType(void)const
 {
     return (_type);
+}
+
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "unknow materia is being used againts " << target.getName() << std::endl;
 }
