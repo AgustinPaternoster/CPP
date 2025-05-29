@@ -1,6 +1,9 @@
 CC = g++
-HEADERS = AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp Character.hpp Floor.hpp
-FILES = AMateria.cpp main.cpp Ice.cpp Cure.cpp Character.cpp Floor.cpp
+HEADERS = AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp\
+			Character.hpp Floor.hpp IMateriaSource.hpp\
+			MateriaSource.hpp
+FILES = AMateria.cpp main.cpp Ice.cpp Cure.cpp Character.cpp\
+		Floor.cpp MateriaSource.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 NAME = materia
 

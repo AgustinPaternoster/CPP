@@ -4,9 +4,9 @@
 
 Character::Character(std::string name):_name(name)
 {
-	for (int i = 0 ; i < 3; i++)
+	for (int i = 0 ; i < 4; i++)
 		_inventory[i] = NULL;
-	std::cout << "character " << name << " created" << std::endl;
+	// std::cout << "character " << name << " created" << std::endl;
 }
 
 Character::Character(const Character& other):_name(other._name)
@@ -20,14 +20,14 @@ Character::Character(const Character& other):_name(other._name)
 			else		
 				_inventory[i] = NULL;
 		}	
-		std::cout << "character " << _name << " copied" << std::endl;
+		// std::cout << "character " << _name << " copied" << std::endl;
 	}
 }
 
 Character::~Character(void)
 {
 	_cleanInventory();
-	std::cout << "character " << _name << " destroyed" << std::endl;
+	// std::cout << "character " << _name << " destroyed" << std::endl;
 }
 
 Character& Character::operator=(const Character & other)
@@ -37,7 +37,7 @@ Character& Character::operator=(const Character & other)
                 this->_name = other._name;
                 _cleanInventory();
                 int i = 0;
-                while (i < 3 && other._inventory[i] != NULL)
+                while (i < 4 && other._inventory[i] != NULL)
                 {
                         this->_inventory[i] = other._inventory[i]->clone();
                         i++;
@@ -54,12 +54,14 @@ std::string const& Character::getName(void)const
 
 void Character::equip(AMateria * m)
 {
+	if (m == NULL)
+		return;
 	for (int i = 0 ; i < 4 ; i++)
 	{
 		if (_inventory[i] == NULL)
 		{
 			_inventory[i] = m;
-			std::cout << "materia added in slot: " << i << std::endl;
+			// std::cout << "materia added in slot: " << i << std::endl;
 			return;
 		}
 	}
@@ -85,15 +87,24 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	(void)idx;
-	(void)target;
-	// copletar
-}
+
+     if (idx < 0 || idx > 3 )
+     {
+             std::cout << "wrong idx number" << std::endl;
+             return;
+     }
+     if (_inventory[idx] == NULL)
+     {
+             std::cout << "no materia available" << std::endl;
+             return;
+     }
+     _inventory[idx]->use(target);
+}                                 
 
 void Character::showMeMaterias(void)
 {
 	int i = 0;
-	while (i < 3 && _inventory[i] != NULL)
+	while (i < 4 && _inventory[i] != NULL)
 	{
 		std::cout << "materia :" << _inventory[i]->getType() << std::endl;
 		i++;
@@ -102,7 +113,7 @@ void Character::showMeMaterias(void)
 
 void Character::_cleanInventory(void)
 {
-		for (int i = 0 ; i < 3 ; i++)
+		for (int i = 0 ; i < 4 ; i++)
 		{
 			if (_inventory[i] != NULL)
 			{

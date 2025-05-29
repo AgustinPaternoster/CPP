@@ -1,8 +1,9 @@
 #ifndef __AMATERIA_H__
 #define __AMATERIA_H__
 #include <string>
-// #include "ICharacter.hpp"
 
+
+class ICharacter;
 class AMateria
 {
     protected:
@@ -14,10 +15,10 @@ class AMateria
         virtual ~AMateria(void);
 
         AMateria & operator=(AMateria const & other);
-        // [...]
+
         std::string const & getType() const; //Returns the materia type
         virtual AMateria* clone() const = 0;
-        // virtual void use(ICharacter& target);
+        virtual void use(ICharacter& target);
 };
 
 #endif

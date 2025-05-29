@@ -4,29 +4,30 @@
 #include <iostream>
 #include "Character.hpp"
 #include "Floor.hpp"
+#include "MateriaSource.hpp"
 
 int main(void)
 {
-    // int idx = 3;
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	
+	ICharacter* me = new Character("me");
+	
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	
+	ICharacter* bob = new Character("bob");
+	
+	me->use(0, *bob);
+	me->use(1, *bob);
+	
+	delete bob;
+	delete me;
+	delete src;
 
-	Floor fl1;	
-	Character ch1("ch1");
-	// Character ch2("ch2");
-	// AMateria *test[idx];
-	// test[0] = new Ice();
-	// test[1] = new Cure();
-	// test[2] = new Cure();
-
-	// for (int i = 0 ; i < idx ; i++)
-	// 	ch1.equip(test[i]);
-	// ch1.showMeMaterias();
-	// ch2 = ch1;
-	// ch2.showMeMaterias();
-	ch1.equip(new Cure());
-	ch1.equip(new Ice());
-	ch1.showMeMaterias();
-	ch1.unequip(0);
-	ch1.showMeMaterias();
-
-    return (0);
+	return 0;
 }

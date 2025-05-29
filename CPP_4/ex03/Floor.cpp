@@ -15,7 +15,8 @@ Floor::~Floor(void)
 void Floor::addMateria(AMateria *unsed)
 {
 	if(_idx < 100)
-	{	_descarted[_idx++] = unsed;
+	{	
+		_descarted[_idx++] = unsed;
 		std::cout << "-added to " << _idx -1 << std::endl;
 	}
 	else
