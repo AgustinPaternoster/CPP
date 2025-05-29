@@ -3,7 +3,6 @@
 #include <string>
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
-
 class Character: public ICharacter
 {
 	public:
@@ -15,11 +14,11 @@ class Character: public ICharacter
 		std::string const& getName(void)const;
 		void equip(AMateria* m);
 		void unequip(int idx);
-		void use(int idx, ICharacter& target);
+		// void use(int idx, ICharacter& target);
 		void showMeMaterias(void);
 
 	private:
-		AMateria* _inventory[4];
+		AMateria* 	_inventory[4];
 		std::string _name;
 		void _cleanInventory(void);
 };
