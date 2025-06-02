@@ -6,7 +6,6 @@ Character::Character(std::string name):_name(name)
 {
 	for (int i = 0 ; i < 4; i++)
 		_inventory[i] = NULL;
-	// std::cout << "character " << name << " created" << std::endl;
 }
 
 Character::Character(const Character& other):_name(other._name)
@@ -20,14 +19,12 @@ Character::Character(const Character& other):_name(other._name)
 			else		
 				_inventory[i] = NULL;
 		}	
-		// std::cout << "character " << _name << " copied" << std::endl;
 	}
 }
 
 Character::~Character(void)
 {
 	_cleanInventory();
-	// std::cout << "character " << _name << " destroyed" << std::endl;
 }
 
 Character& Character::operator=(const Character & other)
@@ -61,7 +58,6 @@ void Character::equip(AMateria * m)
 		if (_inventory[i] == NULL)
 		{
 			_inventory[i] = m;
-			// std::cout << "materia added in slot: " << i << std::endl;
 			return;
 		}
 	}

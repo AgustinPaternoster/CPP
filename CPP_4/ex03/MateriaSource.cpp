@@ -6,7 +6,6 @@ MateriaSource::MateriaSource(void):_idx(0)
 {
 	for (int i = 0; i < 4; i++)
 		_database[i] = NULL;
-	// std::cout << "MateriaSource was created" << std::endl;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& other):_idx(other._idx)
@@ -21,7 +20,6 @@ MateriaSource::~MateriaSource(void)
 {
 	for (int i = 0; i < _idx; i++)
 		delete _database[i];
-	// std::cout << "Materia source destroyed" << std::endl;
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other)

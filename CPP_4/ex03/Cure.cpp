@@ -2,21 +2,14 @@
 #include "ICharacter.hpp"
 #include <iostream>
 
-Cure::Cure(void):AMateria("cure")
-{
-	// std::cout << "Cure created" << std::endl;
-}
+Cure::Cure(void):AMateria("cure"){}
 
 Cure::Cure(Cure const & other):AMateria("cure")
 {
 	(void)other;
-	// std::cout << "Cure copied" << std::endl;
 }
 
-Cure::~Cure(void)
-{
-	// std::cout << "Cure destroyed" << std::endl;
-}
+Cure::~Cure(void){}
 
 Cure & Cure::operator=(const Cure &  other)
 {
@@ -32,8 +25,4 @@ AMateria* Cure::clone(void)const
 void Cure::use(ICharacter& target)
 {
         std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
-}
-void Cure::use(ICharacter& target)
-{
-        std::cout << "* heals " << target.getName() << "'s wounds" << std::endl;
 }

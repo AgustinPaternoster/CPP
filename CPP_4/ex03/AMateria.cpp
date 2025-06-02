@@ -2,20 +2,11 @@
 #include "ICharacter.hpp"
 #include <iostream>
 
-AMateria::AMateria (std::string const & type):_type(type)
-{
-    // std::cout << "Materia created" << std::endl;
-}
+AMateria::AMateria (std::string const & type):_type(type){}
 
-AMateria::~AMateria(void)
-{
-    // std::cout << "materia destroyed" << std::endl;
-}
+AMateria::~AMateria(void){}
 
-AMateria::AMateria(AMateria const & other):_type(other._type)
-{
-    // std::cout << "materia are copied" << std::endl;
-}
+AMateria::AMateria(AMateria const & other):_type(other._type){}
 
  AMateria& AMateria::operator=(AMateria const & other)
  {
