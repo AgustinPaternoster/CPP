@@ -18,16 +18,19 @@ class Bureaucrat
 
 		class GradeTooHighException: public std::exception
 		{
-			private:
-				int _grade;
 			public:
 				const char* what() const throw();
-				void	setGrade(int grade);
-				int		getGrade(void)const;
+		};
+
+		class GradeTooLowException: public std::exception
+		{
+			public:
+				const char* what() const throw();
 		};
 	private:
 		const	std::string _name;
 		int 	_grade; 
 };
 
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
 #endif

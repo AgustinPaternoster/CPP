@@ -4,9 +4,13 @@
 Bureaucrat::Bureaucrat(std::string name, int grade):_name(name)
 {
 	if (grade > 150)
-		throw; // completar exection
+	{
+		throw  Bureaucrat::GradeTooLowException();
+	}
 	else if ( grade < 1)
-		throw; // completar exception
+	{
+		throw Bureaucrat::GradeTooHighException();
+	}
 	_grade = grade;
 }
 
@@ -33,30 +37,33 @@ int Bureaucrat::getGrade(void)const
 
 void Bureaucrat::incrementGrade(void)
 {
-	_grade--;
+	if (--_grade < 1)
+	{
+		throw Bureaucrat::GradeTooHighException();
+	}
 }
 
 void Bureaucrat::decrementGrade(void)
 {
-	_grade++;
+	if(++_grade > 150)
+	{
+		throw Bureaucrat::GradeTooLowException();
+	}
 }
-
-void Bureaucrat::GradeTooHighException::setGrade(int grade)
-{
-	_grade = grade;
-}
-
-int Bureaucrat::GradeTooHighException::getGrade(void)const
-{
-	return(_grade);
-} 
 
 const char* Bureaucrat::GradeTooHighException::what()const throw()
 {
-	std::cout << getGrade() << " is incorrect. Must be bigger than 0" << std::endl;
+	return("Grade must be bigger than 0");
+}
+
+const char* Bureaucrat::GradeTooLowException::what()const throw()
+{
+	return("Grade must be smaller than 151");
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)
 {
 	os << obj.getName() << ", bureaucrat grade " << obj.getGrade();
+	return (os);	
 }
+

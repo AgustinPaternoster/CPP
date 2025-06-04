@@ -1,6 +1,6 @@
 CC = g++
-HEADERS = 
-FILES = 
+HEADERS = Bureaucrat.hpp 
+FILES = Bureaucrat.cpp main.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 NAME = bureu
 
