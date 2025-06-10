@@ -1,12 +1,13 @@
 {
 	"files.associations": {
-		"*.sqlbook": "sql",
-		"*.ndjson": "jsonl",
 		"*.dbclient-js": "javascript",
+		"minishell.h": "c",
+		"type_traits": "c",
+		"utility": "c",
+		"string_view": "cpp",
 		"array": "cpp",
 		"atomic": "cpp",
 		"bit": "cpp",
-		"*.tcc": "cpp",
 		"cctype": "cpp",
 		"clocale": "cpp",
 		"cmath": "cpp",
@@ -32,11 +33,8 @@
 		"numeric": "cpp",
 		"optional": "cpp",
 		"random": "cpp",
-		"string_view": "cpp",
 		"system_error": "cpp",
 		"tuple": "cpp",
-		"type_traits": "cpp",
-		"utility": "cpp",
 		"initializer_list": "cpp",
 		"iosfwd": "cpp",
 		"iostream": "cpp",
@@ -45,14 +43,10 @@
 		"new": "cpp",
 		"numbers": "cpp",
 		"ostream": "cpp",
+		"sstream": "cpp",
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"typeinfo": "cpp"
 	},
-	"github.copilot.enable": {
-		"*": false,
-		"plaintext": false,
-		"markdown": false,
-		"scminput": false
-	}
+	"workbench.colorTheme": "Visual Studio 2017 Dark - C++"
 }
