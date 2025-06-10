@@ -5,10 +5,12 @@
 int main(void)
 {
 	try{
-		// Bureaucrat bc("bureau", 100);
-		Form form("test",151,100);
-		// form.beSigned(bc);
-		// std::cout << form << std::endl;
+		Bureaucrat bc("bureau", 0);
+		Form form("test",99,100);
+		bc.singForm(form);
+		std::cout << form << std::endl;
+		form.beSigned(bc);
+		
 	}
 	catch(std::exception& e)
 	{

@@ -10,7 +10,6 @@ class Form
 		Form(std::string name, int gradeToSign, int gradeToExec);
 		Form(const Form& other);
 		~Form(void);
-		static std::string to_string(int value);
 
 		Form& operator=(const Form& other);
 		std::string getName(void)const;
@@ -21,35 +20,21 @@ class Form
 
 		class GradeTooLowException: public std::exception
 		{
-			private: 
-				int _grade;
-				int _gradeNeeded;
-
 			public:
 				const char* what() const throw();
-				void	_setGrade(int grade);
-				int		_getGrade(void);
-				void	_setGradeNeed(int grade);
-				int		_getGradeNeed(void);
-
 		};
 
 		class GradeTooHighException: public std::exception
 		{
-			private: 
-				int _grade;
-				int _gradeNeeded;
-				std::string _eMsg;
-
 			public:
 				const char* what() const throw();
-				void	_setGrade(int grade);
-				int		_getGrade(void);
-				void	_setGradeNeed(int grade);
-				int		_getGradeNeed(void);
+		};
+		class AlreadySignedException: public std::exception
+		{
+			public:
+				const char* what() const throw();
 
 		};
-
 	private:
 		const std::string	_name;
 		const int			_gradeToSign;
