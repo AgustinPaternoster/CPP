@@ -7,7 +7,7 @@
 int main(void)
 {
 	
-	// AAnimal an;
+
 
 	Cat c1;
 	Dog d1;
