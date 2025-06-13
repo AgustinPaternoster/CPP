@@ -2,7 +2,7 @@
 #include <iostream>
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
-:AForm("Presidential pardon", 25, 5), _target(target){}
+:AForm("Presidential", 25, 5), _target(target){}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other)
 :AForm(other.getName(), other.getGradeToSign(), other.getGradeToSign()), _target(other.getTarget()){}

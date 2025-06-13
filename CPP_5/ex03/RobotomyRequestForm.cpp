@@ -2,7 +2,7 @@
 #include <iostream>
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
-:AForm("Robotomy request", 72, 45), _target(target){}
+:AForm("robotomy", 72, 45), _target(target){}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
 :AForm(other.getName(), other.getGradeToSign(), other.getGradeToSign()), _target(other.getTarget()){}

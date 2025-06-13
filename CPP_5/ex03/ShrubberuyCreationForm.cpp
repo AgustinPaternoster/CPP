@@ -4,7 +4,7 @@
 
 
 ShrubberuyCreationForm::ShrubberuyCreationForm(std::string target)
-:AForm("Shrubberuy creation", 145 , 137) , _target(target) {}
+:AForm("shrubberuy", 145 , 137) , _target(target) {}
 
 ShrubberuyCreationForm::ShrubberuyCreationForm(const ShrubberuyCreationForm& other)
 :AForm(other.getName(), 
