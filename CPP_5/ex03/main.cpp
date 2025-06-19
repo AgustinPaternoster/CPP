@@ -13,6 +13,5 @@ int main(void)
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 	std::cout << *rrf << std::endl;
 	delete rrf;
-	// (void)rrf;
 	return (0);
 }
