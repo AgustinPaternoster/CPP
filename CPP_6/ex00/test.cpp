@@ -14,8 +14,8 @@ std::string checkFloatRange(const std::string& input) {
         // } else {
         //     return "fuera";
         // }
-		 if (value >= -std::numeric_limits<int>::max() &&
-            value <= std::numeric_limits<int>::max()) {
+		 if (value >= -std::numeric_limits<double>::max() &&
+            value <= std::numeric_limits<double>::max()) {
             return "dentro";
         } else {
             return "fuera";

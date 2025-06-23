@@ -96,7 +96,8 @@ static bool isNon(std::string &output)
 
 static void convertFromInt(std::string &output)
 {
-	long nb = std::strtol(output.c_str(),NULL,10);
+	long double nb = std::strtold(output.c_str(), NULL);
+	
 	if (nb < 32 || nb > 126)
 		printMsg("char" , "Non displayable");
 	else
@@ -117,7 +118,7 @@ static void convertFromInt(std::string &output)
 
 static void convertFromFloat(std::string &output)
 {
-	float nb = std::strtof(output.c_str(),NULL);
+	long double nb = std::strtold(output.c_str(), NULL);
 	if (nb < 32 || nb > 126)
 		printMsg("char" , "Non displayable");
 	else
@@ -134,8 +135,7 @@ static void convertFromFloat(std::string &output)
 		printMsg("double", "impossible");
 	else
 		printDouble(static_cast<double>(nb));
-}	// if (static_cast<float>(nb)  < -std::numeric_limits<float>::max()  ||static_cast<float>(nb) > std::numeric_limits<float>::max())
-	// 	printMsg("float", "impossible");
+}
 
 static void convertFromDouble(std::string& output)
 {
