@@ -1,21 +1,38 @@
 #include <iostream>
-#include <cstdlib>
 #include <string>
 #include <limits>
-#include <iomanip>
+#include <stdexcept>
 
-int main() {
+std::string checkFloatRange(const std::string& input) {
+    try {
+        // Convertimos el string a long double para preservar la magnitud
+        long double value = std::stold(input);
+
+        // if (value >= -std::numeric_limits<float>::max() &&
+        //     value <= std::numeric_limits<float>::max()) {
+        //     return "dentro";
+        // } else {
+        //     return "fuera";
+        // }
+		 if (value >= -std::numeric_limits<int>::max() &&
+            value <= std::numeric_limits<int>::max()) {
+            return "dentro";
+        } else {
+            return "fuera";
+        }
+
+    } catch (const std::exception& e) {
+        // En caso de que el string no sea un número válido
+        return "err";
+    }
+}
+
+
+
+int main(int arc, char**argv) {
     
-	long i = -100;
-	float t = std::numeric_limits<float>::min() ;
-	
-	if (t > static_cast<float>(i))
-		std::cout << "ok" << std::endl;
-	else
-		std::cout << "no" << std::endl;
-
-	std::cout << t << std::endl;
-	std::cout << std::fixed << std::setprecision(1) << static_cast<float>(i) << std::endl;
+	std::string test = argv[1];
+	std::cout << checkFloatRange(test) << std::endl;
 	return 0;
 }
 
