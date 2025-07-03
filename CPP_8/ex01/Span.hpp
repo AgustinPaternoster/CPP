@@ -15,7 +15,7 @@ class Span
 		void addNumber(int nb);
 		int shortestSpan(void);
 		int longestSpan(void);
-		void addRange(const Span& source);
+		void addRange(std::vector<int>& source);
 
 		void printVec(void)
 		{
@@ -31,7 +31,7 @@ class Span
 		{
 			const char* what() const throw();
 		};
-		
+
 	private:
 		unsigned int		N;
 		std::vector<int> 	array;

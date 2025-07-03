@@ -46,9 +46,16 @@ int Span::longestSpan(void)
 	return (max - min);
 }
 
+void Span::addRange(std::vector<int> &source)
+{
+	if(array.size() + source.size() > N)
+		throw Span::SizeExceptionType();
+	array.insert(array.end(), source.begin(), source.end());
+}
+
 const char* Span::SizeExceptionType::what() const throw()
 {
-	return ("No more free space to storage");
+	return ("No more free space");
 }
 
 const char* Span::CalculationException::what() const throw()
