@@ -3,7 +3,6 @@
 #include <fstream>
 #include <ctime>
 
-
 std::string dateToString(std::tm *tmStruc)
 {
 	std::string date;
@@ -34,9 +33,10 @@ void stringToDate(std::tm *tmStruct, std::string date)
 
 }
 
+
 int main(void)
 {
-	std::string date = "2012-10-20";
+	std::string date = "2012-12-20";
 	std::tm tmStruct;
 	std::time_t rawDate;
 	std::tm *copy;
@@ -45,5 +45,9 @@ int main(void)
 	rawDate -= 86400;
 	copy = localtime(&rawDate);
 	std::cout << dateToString(copy) << std::endl;
+
+
 	return (0);
+
+	
 }

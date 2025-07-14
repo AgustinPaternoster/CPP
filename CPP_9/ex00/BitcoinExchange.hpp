@@ -15,8 +15,6 @@ class BitcoinExchange
 		BitcoinExchange& operator=(const BitcoinExchange& other);
 		void loadDB(const char* path);
 		void loadInputDB(const char* path);
-		////// 
-		void printData(void);
 		class FileException : public std::exception
 		{
 			const char* what()const throw();
@@ -46,9 +44,11 @@ class BitcoinExchange
 	private:
 		std::map<std::string , float> _database;
 		void _parseData(std::pair<std::string, std::string>& line);
-		// float _exchageRate(std::string date);
+		double _exchageRate(std::string date, std::tm tmStruct);
 		void _valueValidation(std::string& value);
 		void _stringToDate(std::tm *tmStruct, std::string& date);
+		std::string _to_string(int nb);
+		std::string _dateToString(std::tm *tmStruct);
 		int _stoi(std::string str);
 		
 };

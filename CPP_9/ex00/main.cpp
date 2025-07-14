@@ -1,6 +1,6 @@
 #include "BitcoinExchange.hpp"
 #include <iostream>
-#define DATA "./datacopy.csv"
+#define DATA "./data.csv"
 
 int main(int argc , char **argv)
 {
