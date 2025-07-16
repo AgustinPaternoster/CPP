@@ -11,16 +11,18 @@ class RPN
 		~RPN(void);
 
 		RPN& operator=(const RPN& other);
-
+		
 		class RPNException : public std::exception
 		{
-				const char* what()const throw();
+			const char* what()const throw();
 		};
-			
-	private:
+		
+		private:
 		std::string _expresion;
 		std::stack<float> _stk;
 		static std::string const _opTokens;
+		void _parseExpresion(void);
+		bool _makeCalculation(char c);
 		// void _characterValidation(char chr);
 };
 
