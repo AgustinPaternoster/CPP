@@ -15,7 +15,7 @@ class Array
 		int size(void)const;
 		
 		private:
-			int len;
+			int _len;
 			T *arr;
 };
 

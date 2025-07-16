@@ -77,7 +77,7 @@ int main(int arc , char **argv)
 	if (arc > 1)
 	{
 		std::cout << "Wrong numbers of parameters" << std::endl;
-		return (0);
+		return (1);
 	}
 	Base *test = generate();
 	indentify(test);

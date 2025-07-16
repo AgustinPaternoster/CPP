@@ -10,7 +10,9 @@ int main(int arc , char **argv)
 	}
 	try
 	{
-		
+		RPN rnp(argv[1]);
+		rnp.parseExpresion();
+		rnp.printResult();
 	}
 	catch(const std::exception& e)
 	{
