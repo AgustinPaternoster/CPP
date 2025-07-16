@@ -1,8 +1,10 @@
 #include "Serializer.hpp"
+#include <exception>
 
 uintptr_t Serializer::serialize(Data *ptr)
 {
-
+	if (ptr == NULL)
+		throw "Error: NULL pointer";
 	return (reinterpret_cast<uintptr_t>(ptr));
 }
 

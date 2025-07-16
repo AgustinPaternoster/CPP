@@ -1,4 +1,4 @@
-CC = g++
+CC = c++
 HEADERS = Array.hpp Array.tpp
 FILES =  main.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address

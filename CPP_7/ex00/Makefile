@@ -1,4 +1,4 @@
-CC = g++
+CC = c++
 HEADERS = whatever.hpp 
 FILES =  main.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address

@@ -16,8 +16,8 @@ int main(void)
 		Array<std::string> arr3(3);
 		arr3[0] = "hola";
 		arr3[1] = "adios";
+		std::cout << arr3[0] << std::endl;
 		std::cout << arr3[1] << std::endl;
-		std::cout << arr3[2] << std::endl;
 		arr4 = arr;
 		std::cout << arr4[1] << std::endl;
 		std::cout << arr4[5] << std::endl;
