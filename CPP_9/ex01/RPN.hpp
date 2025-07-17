@@ -20,9 +20,10 @@ class RPN
 		
 		private:
 		std::string _expresion;
-		std::stack<float> _stk;
+		std::stack<int> _stk;
 		static std::string const _opTokens;
 		bool _makeCalculation(char c);
+		void _validateExpresion(void);
 		// void _characterValidation(char chr);
 };
 
