@@ -50,7 +50,8 @@
 		"ctime": "cpp",
 		"iomanip": "cpp",
 		"list": "cpp",
-		"set": "cpp"
+		"set": "cpp",
+		"ranges": "cpp"
 	},
 	"workbench.colorTheme": "Visual Studio 2017 Dark - C++"
 }

@@ -26,15 +26,24 @@ void Span::addNumber(int nb)
 
 int Span::shortestSpan(void)
 {
+	int minDistance;
+	int distance;
+
 	if (array.size() < 2)
 		throw Span::CalculationException();
 	std::sort(array.begin(), array.end());
-	for (std::vector<int>::iterator it = array.begin() ; it != array.end(); it++)
+	std::vector<int>::iterator it = array.begin();
+	minDistance = *(it + 1) - *it;
+	while (it != array.end() - 1)
 	{
-		if (*it != *array.begin())
-			return (*it - *array.begin());
+		distance = *(it + 1) - *it;
+		if (distance == 0)
+			return (distance);
+		if (distance < minDistance)
+			minDistance = distance;
+		it++;
 	}
-	return(0);
+	return (minDistance);
 }
 
 int Span::longestSpan(void)
@@ -44,6 +53,15 @@ int Span::longestSpan(void)
 	int min = *std::min_element(array.begin(), array.end());
 	int max = *std::max_element(array.begin(), array.end());
 	return (max - min);
+}
+
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (begin >= end)
+		throw Span::InteatorException();
+	if(std::distance(begin,end) + array.size() > static_cast<long>(N))
+		throw Span::SizeExceptionType();
+	array.insert(array.end(), begin , end);
 }
 
 // void Span::addRange(std::vector<int> &source)
@@ -63,4 +81,9 @@ const char* Span::SizeExceptionType::what() const throw()
 const char* Span::CalculationException::what() const throw()
 {
 	return ("Not enough elements");
+}
+
+const char* Span::InteatorException::what() const throw()
+{
+	return ("Wrong iterators");
 }

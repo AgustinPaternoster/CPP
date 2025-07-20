@@ -2,37 +2,47 @@
 #include "stdlib.h"
 #include "time.h"
 
-int main (void)
+int main (int arc, char **argv)
 {
-	Span sp(4);
-	// std::vector<int> add;
-	// for (int i = 0; i < 5000 ; i++)
-	// 	add.push_back(std::rand() % 1000000);
-	// std::srand(time(NULL));	
-	try
+	if (arc > 1)
 	{
-	// for (int i = 0; i < 5000 ; i++)
-	// 	sp.addNumber(std::rand()% 1000000);
-	// for (int i = 0; i < 5000 ; i++)
-	// 	sp.addNumber(std::rand()% 1000000);
-	sp.addNumber(2);
-	sp.addNumber(4);
-	sp.addNumber(5);
-	sp.addNumber(8);
-
-
-
-	std::cout << "Min: " << sp.shortestSpan() << std::endl;
-	std::cout << "Max: " << sp.longestSpan() << std::endl;
-	// sp.addRange(add);
-	// std::cout << "---------------" << std::endl;
-	// std::cout << "Min: " << sp.shortestSpan() << std::endl;
-	// std::cout << "Max: " << sp.longestSpan() << std::endl;
-
+		Span sp(arc - 1);
+		try
+		{
+			for (int i = 1; i < arc; i++)
+				sp.addNumber(std::atoi(argv[i]));
+			std::cout << "Min: " << sp.shortestSpan() << std::endl;
+			std::cout << "Max: " << sp.longestSpan() << std::endl;
+		}	
+		catch(const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		return (0);
 	}
-	catch(const std::exception& e)
+	else
 	{
-		std::cout << e.what() << std::endl;
+		Span sp(9);
+		std::vector<int> add;
+		for (int i = 0; i < 10 ; i++)
+			add.push_back(std::rand() % 1000);
+		std::srand(time(NULL));	
+		try
+		{
+		// for (int i = 0; i < 10 ; i++)
+		// 	sp.addNumber(std::rand()% 1000);
+		// std::cout << "Min: " << sp.shortestSpan() << std::endl;
+		// std::cout << "Max: " << sp.longestSpan() << std::endl;
+		sp.addRange(add.begin(), add.end());
+		std::cout << "---------------" << std::endl;
+		std::cout << "Min: " << sp.shortestSpan() << std::endl;
+		std::cout << "Max: " << sp.longestSpan() << std::endl;
+
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		return (0);
 	}
-	return (0);
 }
