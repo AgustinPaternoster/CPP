@@ -15,13 +15,16 @@ class Span
 		void addNumber(int nb);
 		int shortestSpan(void);
 		int longestSpan(void);
-		void addRange(std::vector<int>& source);
-
-		void printVec(void)
+	
+		template<typename T>
+		void addRange(T init, T end)
 		{
-			for (std::vector<int>::iterator it = array.begin(); it != array.end(); it++ )
-				std::cout << "v: " << *it << std::endl;
-		}
+			if(std::distance(init,end) + array.size() > static_cast<long>(N))
+				throw Span::SizeExceptionType();
+			array.insert(array.end(), init , end);
+			
+		}	
+
 		class SizeExceptionType:public std::exception
 		{
 			const char* what() const throw();
