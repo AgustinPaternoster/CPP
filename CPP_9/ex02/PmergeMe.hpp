@@ -1,5 +1,4 @@
-
-template<typename single , typename pair>
+#include <vector>
 class PmergeMe
 {
 	public:
@@ -7,9 +6,7 @@ class PmergeMe
 		void printValues(void);
 
 	private:
-		single	_sequence;
-		single	_orderedNb;
-		pair	_pairsNb;	
+		int struggler;
+		std::vector<int> sequense;
 };
 
-#include "PmergeMe.tpp"
