@@ -3,7 +3,16 @@
 
 int main(int arc, char** argv)
 {
-	if (arc < 4)
-		std::cout <<  "Error" << std::endl;
-	
+	(void)arc;
+	try
+	{
+		PmergeMe test;
+		test.orderNumbers(argv);
+		test.print();
+	}
+	catch(std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}	
+	return (0);
 }
