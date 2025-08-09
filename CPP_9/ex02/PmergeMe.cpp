@@ -107,11 +107,11 @@ void PmergeMe::splitPairs(void)
 		_mainSequence.push_back((*it).first);
 		_pendSequence.push_back((*it).second);
 	}
-	if (_pendSequence[0] <= _mainSequence[0])
-	{
-			_mainSequence.insert(_mainSequence.begin(),_pendSequence[0]);
-			_pendSequence.erase(_pendSequence.begin());
-	}		
+	// if (_pendSequence[0] <= _mainSequence[0])
+	// {
+	// 		_mainSequence.insert(_mainSequence.begin(),_pendSequence[0]);
+	// 		_pendSequence.erase(_pendSequence.begin());
+	// }		
 }
 void PmergeMe::print (void)
 {
