@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-class Span
+class Spanls
 {
 	public:
 		Span(unsigned int nb);
