@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+
 class PmergeMe
 {
 	public:
@@ -33,5 +34,7 @@ class PmergeMe
 	void _addSequece(char** argv);
 	void _createPairs(void);
 	void _createInsertionOrder(void);
+	void _BinarySearchInsert(int value);
+	void _insertNumber(void);
 };
 

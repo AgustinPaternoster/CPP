@@ -32,8 +32,7 @@ void PmergeMe::_createPairs(void)
 	{
 		if ((it + 1) == _sequence.end())
 		{
-			
-			_struggler = *it;
+			_struggler = *it;			
 			break;
 		}
 		else
@@ -41,10 +40,9 @@ void PmergeMe::_createPairs(void)
 			_vecPair.push_back(std::make_pair(*it,*(it + 1)));
 			if(*it < *(it + 1))
 				std::swap(_vecPair.back().first, _vecPair.back().second);
-		}	
+			}	
 		it += 2;
 	}
-	
 }
 
 std::vector<std::pair<int,int> > PmergeMe::_recursiveOrder(std::vector<std::pair<int,int> > vecPair)
@@ -99,6 +97,9 @@ void PmergeMe::orderNumbers(char** av)
 	_createPairs();
 	_vecPair = _recursiveOrder(_vecPair);
 	_splitPairs();
+	_createInsertionOrder();
+	_insertNumber();
+
 
 }
 void PmergeMe::_splitPairs(void)
@@ -124,25 +125,9 @@ void PmergeMe::_createJacobSeq(int size, std::vector<int>& seq)
 		value = (pow(2,i) - pow(-1,i))/3;
 		if (value > size)
 			break;
-		seq.push_back(value);
+		seq.push_back(value - 1);
 		i++;
 	}
-}
-
-void PmergeMe::print (void)
-{
-	for(std::vector<int>::iterator it = _mainSequence.begin(); it != _mainSequence.end(); it++)
-		std::cout << *it << " - ";
-
-	std::cout << std::endl;
-
-	for(std::vector<int>::iterator it = _pendSequence.begin(); it != _pendSequence.end(); it++)
-		std::cout << *it << " - ";
-
-	std::cout << std::endl;
-
-	if (_sequence.size() % 2 != 0)
-		std::cout << _struggler << std::endl;
 }
 
 void PmergeMe::_createInsertionOrder(void)
@@ -167,13 +152,69 @@ void PmergeMe::_createInsertionOrder(void)
 			_insertionIndex.push_back(*it);
 			for(int i = *it - 1; i > *(it - 1); i--)
 				_insertionIndex.push_back(i);
-			for(int i = size; i > *it; i--)
+		}	
+		if ((it + 1) == jacobSeq.end())
+		{
+			for(int i = size - 1; i > *it; i--)
 				_insertionIndex.push_back(i);
 		}
 	}
+	
+}
+
+void PmergeMe::_BinarySearchInsert(int value)
+{
+	int indMin = 0;
+	int indMax =  _mainSequence.size() - 1;
+	int middle;
+	
+	if(value >= _mainSequence.back())
+	{
+		_mainSequence.push_back(value);
+		return;
+	}
+
+	while(indMin <= indMax)
+	{
+		middle = (indMin + indMax) / 2;
+		if(value == _mainSequence[middle])
+		{	
+			_mainSequence.insert(_mainSequence.begin() + middle, value);
+			return;
+		}
+		if(value > _mainSequence[middle])
+		indMin = middle + 1;
+		else
+		indMax = middle - 1;
+	}
+	if (value <= _mainSequence[indMin])
+	_mainSequence.insert(_mainSequence.begin() + indMin, value);
+}
+
+void PmergeMe::_insertNumber(void)
+{
+	for(std::vector<int>::iterator it = _insertionIndex.begin(); it != _insertionIndex.end(); it++)
+	{
+		_BinarySearchInsert(_pendSequence[*it]);
+	}
+	if (_sequence.size() % 2 != 0)
+		_BinarySearchInsert(_struggler);
+}
+
+/////// print function /////
+void PmergeMe::print (void)
+{
+	
+	for (std::vector<int>::iterator it = _mainSequence.begin(); it != _mainSequence.end(); it++)
+	{
+		std::cout << *it << " - ";
+ 	}
+	std::cout << std::endl;
 
 }
 
+
+///excetion function ///
 PmergeMe::NumberException::NumberException(std::string msg):_errMsg(msg){}
 
 PmergeMe::NumberException::~NumberException(void)throw(){};
