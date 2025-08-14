@@ -3,8 +3,9 @@
 #include <climits>
 #include <iostream>
 #include <cerrno>
+#include <cmath>
 
-void PmergeMe::addSequece(char** argv)
+void PmergeMe::_addSequece(char** argv)
 {
 	long int nb;
 	char *endptr;
@@ -24,7 +25,7 @@ void PmergeMe::addSequece(char** argv)
 	}
 }
 
-void PmergeMe::createPairs(void)
+void PmergeMe::_createPairs(void)
 {
 	std::vector<int>::iterator it = _sequence.begin();
 	while(it != _sequence.end())
@@ -94,13 +95,13 @@ std::vector<std::pair<int,int> > PmergeMe::_merge(std::vector<std::pair<int,int>
 
 void PmergeMe::orderNumbers(char** av)
 {
-	addSequece(av);
-	createPairs();
+	_addSequece(av);
+	_createPairs();
 	_vecPair = _recursiveOrder(_vecPair);
-	splitPairs();
+	_splitPairs();
 
 }
-void PmergeMe::splitPairs(void)
+void PmergeMe::_splitPairs(void)
 {
 	for(std::vector<std::pair<int,int> >::iterator it = _vecPair.begin(); it != _vecPair.end(); it++)
 	{
@@ -113,6 +114,21 @@ void PmergeMe::splitPairs(void)
 	// 		_pendSequence.erase(_pendSequence.begin());
 	// }		
 }
+
+void PmergeMe::_createJacobSeq(int size, std::vector<int>& seq)
+{
+	int value;
+	int i = 2;
+	while (true)
+	{
+		value = (pow(2,i) - pow(-1,i))/3;
+		if (value > size)
+			break;
+		seq.push_back(value);
+		i++;
+	}
+}
+
 void PmergeMe::print (void)
 {
 	for(std::vector<int>::iterator it = _mainSequence.begin(); it != _mainSequence.end(); it++)
@@ -128,6 +144,36 @@ void PmergeMe::print (void)
 	if (_sequence.size() % 2 != 0)
 		std::cout << _struggler << std::endl;
 }
+
+void PmergeMe::_createInsertionOrder(void)
+{
+	std::vector<int> jacobSeq; 
+	int size = _pendSequence.size();
+	_createJacobSeq(size,jacobSeq);
+	for(std::vector<int>::iterator it = jacobSeq.begin(); it != jacobSeq.end(); it++)
+	{
+		if(it == jacobSeq.begin())
+		{
+			_insertionIndex.push_back(*it);
+			continue;
+		}
+		if(*it - *(it - 1) == 2)
+		{
+			_insertionIndex.push_back(*it);
+			_insertionIndex.push_back(*it - 1);
+		}
+		else
+		{
+			_insertionIndex.push_back(*it);
+			for(int i = *it - 1; i > *(it - 1); i--)
+				_insertionIndex.push_back(i);
+			for(int i = size; i > *it; i--)
+				_insertionIndex.push_back(i);
+		}
+	}
+
+}
+
 PmergeMe::NumberException::NumberException(std::string msg):_errMsg(msg){}
 
 PmergeMe::NumberException::~NumberException(void)throw(){};
