@@ -6,9 +6,10 @@ int main(int arc, char** argv)
 	(void)arc;
 	try
 	{
-		PmergeMe test;
+		FordJohnsonAlg::PmergeVec test;
 		test.orderNumbers(argv);
-		test.print();
+		test.printSequence();
+		test.printTime();
 	}
 	catch(std::exception& e)
 	{
