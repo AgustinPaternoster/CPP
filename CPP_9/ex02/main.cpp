@@ -3,13 +3,20 @@
 
 int main(int arc, char** argv)
 {
-	(void)arc;
+	if (arc < 3)
+	{
+		std::cout << "Error: At least 2 numbers are required." << std::endl;
+		return(1);
+	}
 	try
 	{
-		FordJohnsonAlg::PmergeVec test;
-		test.orderNumbers(argv);
-		test.printSequence();
-		test.printTime();
+		FordJohnsonAlg::PmergeDeque deque;
+		FordJohnsonAlg::PmergeVec	vec;
+		deque.orderNumbers(argv);
+		vec.orderNumbers(argv);
+		vec.printSequence();
+		deque.printTime();
+		vec.printTime();
 	}
 	catch(std::exception& e)
 	{

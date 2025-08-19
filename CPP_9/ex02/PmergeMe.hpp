@@ -1,7 +1,7 @@
 #include <vector>
 #include <string>
 #include <time.h>
-#include <list>
+#include <deque>
 
 
 class FordJohnsonAlg
@@ -37,7 +37,32 @@ class FordJohnsonAlg
 			void _BinarySearchInsert(int value);
 			void _insertNumber(void);
 		};
-
+class PmergeDeque
+		{
+			public:
+			void orderNumbers(char** av);
+			void printSequence(void);
+			void printTime(void);
+			
+			private:
+			clock_t _before;
+			clock_t _processTime;
+			int _struggler;
+			std::deque<std::pair<int,int> > _dequePair;
+			std::deque<int> _sequence;
+			std::deque<int> _mainSequence;
+			std::deque<int> _pendSequence;
+			std::deque<int> _insertionIndex;
+			std::deque<std::pair<int,int> > _recursiveOrder(std::deque<std::pair<int,int> > vecPair);
+			std::deque<std::pair<int,int> > _merge(std::deque<std::pair<int,int> > first, std::deque<std::pair<int,int> > second); 
+			void _createJacobSeq(int size, std::deque<int>& seq);
+			void _splitPairs(void);
+			void _addSequece(char** argv);
+			void _createPairs(void);
+			void _createInsertionOrder(void);
+			void _BinarySearchInsert(int value);
+			void _insertNumber(void);
+		};
 		class NumberException: public std::exception
 		{
 			public:

@@ -18,6 +18,11 @@ FordJohnsonAlg& FordJohnsonAlg::operator=(const FordJohnsonAlg& other)
 	return(*this);
 }
 
+FordJohnsonAlg::~FordJohnsonAlg(void){};
+
+
+////////// VECTOR CLASS ////////////
+
 void FordJohnsonAlg::FordJohnsonAlg::PmergeVec::_addSequece(char** argv)
 {
 	long int nb;
@@ -227,6 +232,220 @@ void FordJohnsonAlg::PmergeVec::printSequence(void)
 void FordJohnsonAlg::PmergeVec::printTime(void)
 {
 	std::cout << "Time to process a range of " << _sequence.size() << " elements with std::vector: " 
+			  << (float)_processTime / CLOCKS_PER_SEC << " seconds" << std::endl;
+}
+
+////////// DEQUE CLASS ////////////
+
+void FordJohnsonAlg::FordJohnsonAlg::PmergeDeque::_addSequece(char** argv)
+{
+	long int nb;
+	char *endptr;
+	int i = 1;
+	_before = clock();
+
+	while(argv[i])
+	{
+		nb = strtol(argv[i], &endptr, 10);
+		if(endptr == argv[i])
+			throw FordJohnsonAlg::NumberException("Error: No digits were found");
+		else if (*endptr != '\0')
+			throw FordJohnsonAlg::NumberException("Error: Invalid character");
+		else if (errno == ERANGE || (nb > INT_MAX ) || nb < 0)
+			throw FordJohnsonAlg::NumberException("Error: Wrong number");
+		_sequence.push_back(static_cast<int>(nb));
+		i++;
+	}
+}
+
+void FordJohnsonAlg::PmergeDeque::_createPairs(void)
+{
+	std::deque<int>::iterator it = _sequence.begin();
+	while(it != _sequence.end())
+	{
+		if ((it + 1) == _sequence.end())
+		{
+			_struggler = *it;			
+			break;
+		}
+		else
+		{
+			_dequePair.push_back(std::make_pair(*it,*(it + 1)));
+			if(*it < *(it + 1))
+				std::swap(_dequePair.back().first, _dequePair.back().second);
+			}	
+		it += 2;
+	}
+}
+
+std::deque<std::pair<int,int> > FordJohnsonAlg::PmergeDeque::_recursiveOrder(std::deque<std::pair<int,int> > vecPair)
+{
+	std::deque<std::pair<int,int> > firstHalf;
+	std::deque<std::pair<int,int> > secondHalf;
+
+	if(vecPair.size() < 2)
+		return (vecPair);
+	
+	int half = vecPair.size() / 2;
+	for (int i = 0; i < half; i++)
+		firstHalf.push_back(vecPair[i]);
+	for (int i = half; i < (int)vecPair.size(); i++)
+		secondHalf.push_back(vecPair[i]);
+	return(_merge(_recursiveOrder(firstHalf),_recursiveOrder(secondHalf)));
+}
+
+std::deque<std::pair<int,int> > FordJohnsonAlg::PmergeDeque::_merge(std::deque<std::pair<int,int> > first, std::deque<std::pair<int,int> > second)
+{
+	std::deque<std::pair<int,int> > result;
+	while(first.size() > 0 && second.size() > 0)
+	{
+		if(first[0].first > second[0].first)
+		{
+			result.push_back(second[0]);
+			second.erase(second.begin());
+		}
+		else
+		{
+			result.push_back(first[0]);
+			first.erase(first.begin()); 
+		}
+	}
+	while (first.size() > 0)
+	{
+		result.push_back(first[0]);
+		first.erase(first.begin()); 
+	}
+	
+	while (second.size() > 0)
+	{
+		result.push_back(second[0]);
+		second.erase(second.begin());
+	}
+	return (result);	
+}
+
+void FordJohnsonAlg::PmergeDeque::orderNumbers(char** av)
+{
+	_addSequece(av);
+	_createPairs();
+	_dequePair = _recursiveOrder(_dequePair);
+	_splitPairs();
+	_createInsertionOrder();
+	_insertNumber();
+}
+void FordJohnsonAlg::PmergeDeque::_splitPairs(void)
+{
+	for(std::deque<std::pair<int,int> >::iterator it = _dequePair.begin(); it != _dequePair.end(); it++)
+	{
+		_mainSequence.push_back((*it).first);
+		_pendSequence.push_back((*it).second);
+	}		
+}
+
+void FordJohnsonAlg::PmergeDeque::_createJacobSeq(int size, std::deque<int>& seq)
+{
+	int value;
+	int i = 2;
+	while (true)
+	{
+		value = (pow(2,i) - pow(-1,i))/3;
+		if (value > size)
+			break;
+		seq.push_back(value - 1);
+		i++;
+	}
+}
+
+void FordJohnsonAlg::PmergeDeque::_createInsertionOrder(void)
+{
+	std::deque<int> jacobSeq; 
+	int size = _pendSequence.size();
+	_createJacobSeq(size,jacobSeq);
+	for(std::deque<int>::iterator it = jacobSeq.begin(); it != jacobSeq.end(); it++)
+	{
+		if(it == jacobSeq.begin())
+		{
+			_insertionIndex.push_back(*it);
+			continue;
+		}
+		if(*it - *(it - 1) == 2)
+		{
+			_insertionIndex.push_back(*it);
+			_insertionIndex.push_back(*it - 1);
+		}
+		else
+		{
+			_insertionIndex.push_back(*it);
+			for(int i = *it - 1; i > *(it - 1); i--)
+				_insertionIndex.push_back(i);
+		}	
+		if ((it + 1) == jacobSeq.end())
+		{
+			for(int i = size - 1; i > *it; i--)
+				_insertionIndex.push_back(i);
+		}
+	}
+}
+
+void FordJohnsonAlg::PmergeDeque::_BinarySearchInsert(int value)
+{
+	int indMin = 0;
+	int indMax =  _mainSequence.size() - 1;
+	int middle;
+	
+	if(value >= _mainSequence.back())
+	{
+		_mainSequence.push_back(value);
+		return;
+	}
+	while(indMin <= indMax)
+	{
+		middle = (indMin + indMax) / 2;
+		if(value == _mainSequence[middle])
+		{	
+			_mainSequence.insert(_mainSequence.begin() + middle, value);
+			return;
+		}
+		if(value > _mainSequence[middle])
+		indMin = middle + 1;
+		else
+		indMax = middle - 1;
+	}
+	if (value <= _mainSequence[indMin])
+	_mainSequence.insert(_mainSequence.begin() + indMin, value);
+}
+
+void FordJohnsonAlg::PmergeDeque::_insertNumber(void)
+{
+	for(std::deque<int>::iterator it = _insertionIndex.begin(); it != _insertionIndex.end(); it++)
+	{
+		_BinarySearchInsert(_pendSequence[*it]);
+	}
+	if (_sequence.size() % 2 != 0)
+		_BinarySearchInsert(_struggler);
+	_processTime = clock() - _before;
+}
+
+void FordJohnsonAlg::PmergeDeque::printSequence(void)
+{
+	std::cout << "Before: ";
+	for (std::deque<int>::iterator it = _sequence.begin(); it != _sequence.end(); it++)
+	{
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+	
+	std::cout << "After:  ";
+	for (std::deque<int>::iterator it = _mainSequence.begin(); it !=  _mainSequence.end(); it++)
+	{
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+}
+
+void FordJohnsonAlg::PmergeDeque::printTime(void)
+{
+	std::cout << "Time to process a range of " << _sequence.size() << " elements with std::deque: " 
 			  << (float)_processTime / CLOCKS_PER_SEC << " seconds" << std::endl;
 }
 

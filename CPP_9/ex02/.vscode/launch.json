@@ -6,7 +6,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/PmergeMe",  // Ruta del ejecutable
-		"args": ["5", "28" , "153" , "999", "66" , "0" , "19" , "651", "34", "43" ,"1001" , "13" , "12" , "985" , "344", "123" , "71"],  // Argumentos para pasar a tu minishell si es necesario
+		"args": ["2147483650" "0" "756"],  // Argumentos para pasar a tu minishell si es necesario
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",  // Directorio de trabajo
 		"environment": [],
