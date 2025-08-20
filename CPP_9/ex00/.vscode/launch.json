@@ -6,7 +6,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/btc",  // Ruta del ejecutable
-		"args": ["input.txt"],  // Argumentos para pasar a tu minishell si es necesario
+		"args": ["test.txt"],  // Argumentos para pasar a tu minishell si es necesario
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",  // Directorio de trabajo
 		"environment": [],
