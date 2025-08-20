@@ -52,7 +52,8 @@
 		"list": "cpp",
 		"set": "cpp",
 		"map": "cpp",
-		"fstream": "cpp"
+		"fstream": "cpp",
+		"ranges": "cpp"
 	},
 	"workbench.colorTheme": "Visual Studio 2017 Dark - C++"
 }

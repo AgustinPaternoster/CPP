@@ -47,6 +47,7 @@ class BitcoinExchange
 		double _exchageRate(std::string date, std::tm tmStruct);
 		void _valueValidation(std::string& value);
 		void _stringToDate(std::tm *tmStruct, std::string& date);
+		void _checkinputfile(std::string data);
 		std::string _to_string(int nb);
 		std::string _dateToString(std::tm *tmStruct);
 		int _stoi(std::string str);

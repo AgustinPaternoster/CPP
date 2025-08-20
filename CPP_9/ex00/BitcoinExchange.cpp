@@ -177,6 +177,17 @@ std::string BitcoinExchange::_dateToString(std::tm *tmStruct)
 	return (date);
 }
 
+void BitcoinExchange::_checkinputfile(std::string data)
+{
+		size_t pos  = data.find(" | ");
+		if (pos == std::string::npos)
+
+		else
+		{
+			line.first = data.substr(0, pos);
+			line.second = data.substr(pos + 3);
+		}
+}
 const char* BitcoinExchange::FileException::what()const throw()
 {
 	return ("Error opening file");

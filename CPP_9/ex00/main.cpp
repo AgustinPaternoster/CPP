@@ -14,7 +14,6 @@ int main(int argc , char **argv)
 		BitcoinExchange test;
 		test.loadDB(DATA);
 		test.loadInputDB(argv[1]);
-		// test.printData();
 	}
 	catch(std::exception& e)
 	{
