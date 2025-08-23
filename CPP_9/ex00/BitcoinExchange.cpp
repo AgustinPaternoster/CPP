@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <sstream>
 #include <limits>
+#include <cctype> 
 
 BitcoinExchange::BitcoinExchange(void){}
 BitcoinExchange::BitcoinExchange(const char* path)
@@ -52,6 +53,7 @@ void BitcoinExchange::loadInputDB(const char* path)
 	if(!file.is_open())
 		throw BitcoinExchange::FileException();
 	std::getline(file, data);
+	_checkinputfile(data);
 	while (std::getline(file, data))
 	{
 		pos = data.find(" | ");
@@ -177,6 +179,22 @@ std::string BitcoinExchange::_dateToString(std::tm *tmStruct)
 	return (date);
 }
 
+void BitcoinExchange::_checkinputfile(std::string data)
+{
+		data = _toLower(data);
+		if (data.find(" | ") == std::string::npos || 
+			data.find("value") == std::string::npos ||
+			data.find("date") == std::string::npos)
+			throw BitcoinExchange::ValueException("Wrong headear input file");
+}
+
+std::string BitcoinExchange::_toLower(std::string &str)
+{
+	std::string result;
+	for (std::string::iterator it = str.begin(); it != str.end(); it++)
+		result.push_back(tolower(*it));
+	return (result);
+}
 const char* BitcoinExchange::FileException::what()const throw()
 {
 	return ("Error opening file");
