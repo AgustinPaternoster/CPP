@@ -1,17 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "bsq.h"
 
-typedef struct
-{
-    int row;
-    int columns;
-    char**map;
-    int lines;
-    char emptyCh;
-    char obstacleCh;
-    char fullCh;
+void printMap(map* m1, int maxValue, int row , int colum);
 
-}map;
+
+
+
 
 
 int getData(char *path, map* m1)
@@ -20,15 +13,12 @@ int getData(char *path, map* m1)
     size_t len;
     __ssize_t n;
     __ssize_t t;
-    FILE* map = fopen(path,"r");
-    if (map == NULL)
-        return (0);
-    n = getline(&line,&len,map);
+    n = getline(&line,&len,m1->file);
     int i = 0;
-    m1->lines = 0;
-    while(line[i] > '0' && line[i] <= '9')
+    m1->row = 0;
+    while(line[i] >= '0' && line[i] <= '9')
     {
-        m1->lines = (m1->lines * 10) + (line[i] - 48);
+        m1->row = (m1->row * 10) + (line[i] - 48);
         i++;
     }
     m1->emptyCh = line[++i];
@@ -36,17 +26,79 @@ int getData(char *path, map* m1)
     m1->obstacleCh = line[++i];
     i++;
     m1->fullCh = line[++i];
-    n = 0;
-    while((n = getline(&line,&len,map)) != -1)
+    int checkSizerow = 0;
+    i = 0;
+    while((n = getline(&line,&len,m1->file)) != -1)
     {
-        printf("%ld\n", n);
-        printf("%s\n", line);
+        if(!checkSizerow)
+        {
+            m1->columns = n -1;
+            m1->map = malloc(sizeof(char*) * m1->columns);
+            checkSizerow = 1;
+        }
+        if(n - 1 != m1->columns)
+            return(0);
+        cpystr(line,m1,i);
+        i++;
     }
     free(line);
     return (1);
-    
-
 }
+
+int findSquare(map *m1)
+{
+    int maxVal = 0;
+    int colPos = 0;
+    int rowPos = 0;
+    int **dp = malloc(sizeof(int*) * m1->row);
+    // proteger malloc
+    for(int i = 0; i < m1->row; i++)
+        dp[i] = malloc(sizeof(int)* m1->columns);
+    for(int i = 0; i < m1->row; i++)
+        dp[i][0] = m1->map[i][0] == m1->obstacleCh ? 0 : 1;;
+    for(int i = 0; i < m1->columns; i++)
+        dp[0][i] = m1->map[0][i] == m1->obstacleCh ? 0 : 1;
+    for(int i = 1; i < m1->row; i++)
+        for(int y = 1 ; y < m1->columns; y++)
+        {
+            if (m1->map[i][y] == m1->obstacleCh)
+                dp[i][y] = 0;
+            else
+            {
+                dp[i][y] = 1 + minVal(dp[i -1][y],dp[i][y - 1], dp[i -1][y - 1]);
+                if(dp[i][y] > maxVal)
+                {
+                    maxVal = dp[i][y];
+                    colPos = y;
+                    rowPos = i;
+                }
+            }
+        }
+
+    printMap(m1,maxVal,rowPos,colPos);
+    // for (size_t i = 0; i < m1->row; i++)
+    // {
+    //     for(int y = 0 ; y < m1->columns; y++)
+    //         printf("%d", dp[i][y]);
+    //     printf("\n");
+    // }
+    
+    return (1);
+}
+
+void printMap(map* m1, int maxValue, int row , int colum)
+{
+    
+    for (int i = 0; i < m1->row; i++)
+        for (int y = 0; y < m1->columns; y++)
+        {
+            if((i > (row - maxValue) && i <= row) && (y > (colum - maxValue) && y <= colum))
+                m1->map[i][y] = m1->fullCh;
+        }
+    for (int i = 0; i < m1->row; i++)
+        fprintf(stdout,"%s", m1->map[i]);
+}
+
 
 int main(int arc, char**argv)
 {
@@ -54,25 +106,20 @@ int main(int arc, char**argv)
 
     char *path = "map.txt";
 
+    if (!openFile(path, &m1))
+    {
+        printf("File error");
+        return (1);
+    }
     if (!getData(path, &m1))
     {
         printf("error");
         return (1);
     }
-    return (0);
-
-    // char **mapmalloc()
-    // char *lineptr = NULL;
-    // size_t len = 0;
-    // FILE *map = fopen("map.txt", "r");
-    // if (map == NULL)
-    // {    
-    //     fprintf(stdout,"error\n");
-    //     return (1);
-    // }
-    // ssize_t nread;
-    // nread = getline(&lineptr,&len,map);
-    // fprintf(stdout," 1_ %s", lineptr);
+    findSquare(&m1);
+    // for (int i = 0; i < m1.row; i++)
+    //     printf("%s",m1.map[i]);
+    // return (0);
 
 
 

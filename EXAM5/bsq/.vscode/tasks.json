@@ -7,9 +7,10 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "main.c",
+                "fn.c",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "bsq"
             ],
             "options": {
                 "cwd": "${fileDirname}"
