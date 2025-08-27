@@ -1,7 +1,12 @@
 #include "bigint.hpp"
 
 Bigint::Bigint(void):_number("0"){};
-Bigint::Bigint(std::string nb):_number(nb){};
+Bigint::Bigint(std::string nb):_number(nb)
+{
+    while( _number.front() == 48)
+        _number.erase(_number.begin());
+};
+
 Bigint::Bigint(int nb)
 {
     std::ostringstream ss;
@@ -64,6 +69,92 @@ Bigint& Bigint::operator+=(const Bigint& other)
     return(*this);
 }
 
+
+
+// Bigint& Bigint::operator++(void)
+// {
+//     Bigint tmp(1);
+//     *this += tmp;
+//     return(*this);
+// }
+
+// Bigint Bigint::operator++(int)
+// {
+//     Bigint tmp(1);
+//     Bigint bk(*this);
+    
+// }
+
+bool Bigint::operator<(const Bigint& other)
+{
+    if (this->_number.size() < other._number.size())
+        return (true);    
+    if (this->_number.size() > other._number.size())
+        return (false);
+    if(this->_number.compare(other._number) < 0)
+        return (true);
+    return(false);
+}
+
+bool Bigint::operator>(const Bigint& other)
+{
+    if (this->_number.size() > other._number.size())
+        return (true);    
+    if (this->_number.size() < other._number.size())
+        return (false);
+    if(this->_number.compare(other._number) > 0)
+        return (true);
+    return (false);
+}
+
+bool Bigint::operator<=(const Bigint& other)
+{
+    if (this->_number.size() < other._number.size())
+        return (true);    
+    if (this->_number.size() > other._number.size())
+        return (false);
+    if(this->_number.compare(other._number) <= 0)
+        return (true);
+    return(false);
+}
+
+bool Bigint::operator>=(const Bigint& other)
+{
+    if (this->_number.size() > other._number.size())
+        return (true);    
+    if (this->_number.size() < other._number.size())
+        return (false);
+    if(this->_number.compare(other._number) >= 0)
+        return (true);
+    return (false);
+}
+
+bool Bigint::operator!=(const Bigint& other)
+{
+    if (this->_number.size() != other._number.size())
+        return (true);
+    if(this->_number.compare(other._number) != 0)
+        return (true);
+    return (false);
+}
+
+bool Bigint::operator==(const Bigint& other)
+{
+    if (this->_number.size() != other._number.size())
+        return (false);
+    if(this->_number.compare(other._number) == 0)
+        return (true);
+    return (false);
+}
+
+Bigint& Bigint::operator>>(int nb)
+{
+    for(int i = 0; i < nb && !_number.empty(); i++)
+        this->_number.pop_back();
+    if(_number.empty())
+        this->_number = "0";
+    return(*this);
+}
 std::string Bigint::getNumber(void) const
 {
     return (_number);

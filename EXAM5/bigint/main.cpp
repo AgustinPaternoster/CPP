@@ -3,11 +3,12 @@
 
 int main(void)
 {
-    Bigint a(234);
+    Bigint a(1337);
     Bigint b("10");
-    Bigint c;
 
-    b += a;
-    std::cout << b << std::endl;
+
+    
+
+    std::cout << (a >> 5) << std::endl;
     // std::cout << a.getNumber()<< std::endl;
 }
