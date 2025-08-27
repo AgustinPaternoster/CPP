@@ -22,33 +22,12 @@ int charToint(char c)
 
 int main(void)
 { 
-    std::string nb1 = "21";
+    std::string nb1 = "00032000";
     std::string nb2 = "100000";
-    std::string result;
-    int rest = 0;
-    int char1;
-    int char2;
-    char c;
     
-    while (!nb1.empty() || !nb2.empty())
+    for (int i = 0; nb1.front() == 48; i++)
     {
-        if(!nb1.empty())
-        {
-            char1 = charToint(nb1.back());
-            nb1.pop_back();
-        }
-        if(!nb2.empty())
-        {
-            char2 = charToint(nb2.back());
-            nb2.pop_back();
-        }
-        c = (((char1 + char2) % 10) + rest) + 48;
-        rest = (char1 + char2) / 10 ;
-        result = c + result;
-        char1 = 0;
-        char2 = 0;
+        nb1.erase(nb1.begin());
     }
-    if (rest != 0)
-        result = static_cast<char>(rest + 48) + result;
-    std::cout << result <<std::endl;
+    std::cout << nb1 <<std::endl;
 }

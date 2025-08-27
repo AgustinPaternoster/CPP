@@ -16,7 +16,24 @@ class Bigint
         std::string getNumber(void) const;
         Bigint& operator=(const Bigint& other);
         Bigint operator+(const Bigint& other);
+        // Bigint operator++(int);
+        // Bigint& operator++(void);
         Bigint& operator+=(const Bigint& other);
+
+        Bigint& operator>>(int nb);
+        // Bigint& operator>>(const);
+
+        bool operator<(const Bigint& other);
+        bool operator>(const Bigint& other);
+        bool operator>=(const Bigint& other);
+        bool operator<=(const Bigint& other);
+        bool operator!=(const Bigint& other);
+        bool operator==(const Bigint& other);
+
+
+
+
+
 
         private:
             std::string _number;
