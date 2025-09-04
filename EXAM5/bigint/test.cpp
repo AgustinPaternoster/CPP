@@ -22,12 +22,9 @@ int charToint(char c)
 
 int main(void)
 { 
-    std::string nb1 = "00032000";
-    std::string nb2 = "100000";
-    
-    for (int i = 0; nb1.front() == 48; i++)
-    {
-        nb1.erase(nb1.begin());
-    }
-    std::cout << nb1 <<std::endl;
+    std::string nb1 = "000000000000000000000000000000000000000000000000000000000000";
+
+   
+    std::cout << nb1.size() <<std::endl;
+    return (1);
 }
